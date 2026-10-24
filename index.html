@@ -101,6 +101,15 @@ button.b{transition:transform .15s,filter .15s}button.b:hover{transform:translat
 .splash{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);animation:out .6s 1.4s forwards}
 .splash .logo{width:120px;height:120px;animation:pop .8s,flt 3s .8s infinite}.splash b{font:800 36px Fraunces,Georgia,serif;background:linear-gradient(90deg,#ffc857,#ff5c9d);-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .8s .3s backwards}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+header{padding:14px 16px;border-radius:20px}header:after,.brand small{display:none}h1{font-size:24px}.logo{width:44px;height:44px}
+.stats{font-size:12px;padding:4px 10px}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 6px);background:rgba(24,18,48,.78);backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:18px;padding:5px;margin:10px 0;gap:4px;overflow:hidden}
+nav button{flex:1;padding:9px 4px;border:0;background:transparent;border-radius:13px;font-size:13.5px;box-shadow:none}
+.card{padding:12px;margin-bottom:10px}
+.addr{flex-wrap:nowrap;align-items:stretch}#nl{margin:0;min-height:46px;height:46px;resize:none;flex:1}
+.song{flex-wrap:nowrap;cursor:default}.song>div:first-child{flex:1;cursor:pointer}.cov{width:44px;height:44px;font-size:20px;border-radius:13px}
+.tx{min-width:0}.tx b{display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ic{gap:6px;flex-wrap:nowrap}.ib{min-width:34px;height:34px;padding:0 8px;display:grid;place-items:center;border:1px solid var(--bd);border-radius:10px;background:transparent;color:var(--tx);text-decoration:none;font:inherit;font-size:14px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -241,6 +250,10 @@ const _d2=draw;draw=function(k){_d2(k);try{deco2()}catch(e){}};
 function boom(n){n=n||30;const E=['🎉','✨','🎶','⭐','💃','🎸'];for(let i=0;i<n;i++){const s=document.createElement('span');s.textContent=E[i%6];s.style.cssText=`position:fixed;top:-30px;left:${Math.random()*100}vw;font-size:${16+Math.random()*18}px;z-index:99;pointer-events:none;animation:fall ${1.6+Math.random()*1.6}s ease-in forwards`;document.body.append(s);setTimeout(()=>s.remove(),3500)}}
 const _ck=chk;chk=function(){_ck();const i=[...document.querySelectorAll('.cl input')];if(i.length&&i.every(x=>x.classList.contains('ok')))boom()};
 const _an=ans;ans=function(k){_an(k);if(k)boom(10)};
+head=function(){document.getElementById('st').textContent='🔥 '+S.streak+' j · '+S.vocab.length+' mots';document.getElementById('nav').innerHTML=TABS.map(t=>`<button class="${t[0]==tab?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join('')};TABS[3][1]='Mots';
+vSongs=function(){return `<div class="card row addr"><textarea id="nl" rows="1" placeholder="＋ Colle un lien ou des paroles…"></textarea><button class="b" onclick="addl()">Ajouter</button></div>`+
+ S.songs.map(s=>{const h=[...s.title].reduce((a,c)=>a+c.charCodeAt(0),0)%360;return `<div class="card sg song"><div onclick="cur=${s.id};go('tr')"><div class="cov" style="background:linear-gradient(135deg,hsl(${h},70%,52%),hsl(${(h+45)%360},80%,60%))">♪</div><div class="tx"><b class="es">${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length?s.lines.length+' lignes':'<span class="tag">paroles à ajouter</span>'}</div></div></div>
+<div class="row ic">${s.link?`<a class="ib" href="${esc(s.link)}" target="_blank" rel="noopener">▶</a>`:''}<button class="ib" onclick="cur=${s.id};song().edit=true;go('tr')">✏️</button><button class="ib" onclick="dels(${s.id})">${pend==s.id?'Sûr ?':'✕'}</button></div></div>`}).join('')};
 ld();draw();
 </script>
 </body>
