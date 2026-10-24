@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="../manifest.webmanifest"><meta name="theme-color" content="#0e0a1f"><link rel="apple-touch-icon" href="../icon-192.png">
+<title>Cancionero – Apprendre l’espagnol en chansons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf6ee;--sf:#fff;--tx:#2a2118;--mu:#7a6c5d;--ac:#c8452b;--ac2:#f2b134;--ok:#2f8f5b;--bd:#e6dccb;--bad:#c0392b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1713;--sf:#27201a;--tx:#f3eadd;--mu:#a89a88;--ac:#ef6a4d;--ac2:#f2b134;--ok:#4cc07f;--bd:#3a3128;--bad:#ef6a5d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1713;--sf:#27201a;--tx:#f3eadd;--mu:#a89a88;--ac:#ef6a4d;--ac2:#f2b134;--ok:#4cc07f;--bd:#3a3128;--bad:#ef6a5d;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+h1{font:700 26px Georgia,"Times New Roman",serif;margin:0;color:var(--ac)}
+.stats{font-size:13px;color:var(--mu)}
+nav{display:flex;gap:6px;overflow-x:auto;margin:14px 0;padding-bottom:4px}
+nav button{white-space:nowrap;border:1px solid var(--bd);background:var(--sf);color:var(--tx);padding:8px 14px;border-radius:99px;cursor:pointer;font-size:14px}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+input,textarea,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:9px;margin:4px 0}
+textarea{min-height:90px;resize:vertical}
+button.b{border:0;background:var(--ac);color:#fff;padding:9px 14px;border-radius:10px;cursor:pointer;font:inherit;font-size:14px}
+button.g{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+button.sm{padding:5px 10px;font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mu{color:var(--mu);font-size:13px}
+.es{font:20px/1.6 Georgia,serif}
+.w{cursor:pointer;border-radius:4px;padding:0 1px}.w:hover{background:var(--ac2);color:#2a2118}
+.ref{margin-top:6px;padding:8px;border-left:3px solid var(--ac2);background:var(--bg);border-radius:6px}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--ok)}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--ac2);color:#2a2118}
+.pop{position:sticky;bottom:8px;border:2px solid var(--ac);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.cl input{display:inline-block;width:auto;min-width:70px;max-width:130px;padding:2px 6px;margin:0 2px;font:18px Georgia,serif}
+.cl input.ok{border-color:var(--ok);color:var(--ok)}.cl input.ko{border-color:var(--bad);color:var(--bad)}
+.big{font:30px Georgia,serif;text-align:center;padding:26px 8px}
+a{color:var(--ac)}
+:root{--bg:#fff6e8;--sf:#fffdf8;--tx:#2b1d16;--mu:#8a7566;--ac:#d9482b;--ac2:#f4a82b;--ok:#2f9468;--bd:#f0e0c8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17110e;--sf:#241b16;--tx:#f6ecdf;--mu:#ad9d8b;--ac:#f0694a;--bd:#3a2e25}}
+:root[data-theme="dark"]{--bg:#17110e;--sf:#241b16;--tx:#f6ecdf;--mu:#ad9d8b;--ac:#f0694a;--bd:#3a2e25}
+body{font-family:'DM Sans',system-ui,sans-serif;background:radial-gradient(900px 400px at 85% -5%,rgba(244,168,43,.28),transparent),radial-gradient(700px 400px at -10% 10%,rgba(217,72,43,.18),transparent),var(--bg);background-attachment:fixed}
+header{background:linear-gradient(135deg,#d9482b,#f4a82b);color:#fff;border-radius:24px;padding:22px;box-shadow:0 12px 30px -10px rgba(217,72,43,.5);position:relative;overflow:hidden}
+header:after{content:'♪ ♫ ♬';position:absolute;right:16px;top:-8px;font-size:64px;opacity:.15;letter-spacing:6px}
+h1,.ttl{font-family:Fraunces,Georgia,serif;font-weight:800;letter-spacing:-.5px}
+h1{color:#fff;font-size:30px}
+.stats{color:#fff;background:rgba(255,255,255,.22);padding:6px 12px;border-radius:99px;backdrop-filter:blur(6px);font-weight:500}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(10px);padding:10px 0;margin:8px 0}
+nav button{border-radius:14px;font-weight:500;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+nav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));border:0;box-shadow:0 6px 14px -4px rgba(217,72,43,.5)}
+.card{border-radius:20px;border:1px solid var(--bd);box-shadow:0 8px 24px -14px rgba(90,50,20,.35);transition:transform .2s}
+.card:hover{transform:translateY(-1px)}
+button.b{background:linear-gradient(135deg,var(--ac),#e8702a);border-radius:12px;font-weight:500;box-shadow:0 4px 10px -3px rgba(217,72,43,.5)}
+button.b.g{background:transparent;box-shadow:none;color:var(--tx)}
+.es{font-family:Fraunces,Georgia,serif;font-weight:600}
+.w:hover{background:var(--ac2)}
+input,textarea,select{border-radius:12px;background:var(--bg)}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--ac2);border-color:transparent}
+.ttl{font-size:20px}.add{border:2px dashed var(--ac2);background:color-mix(in srgb,var(--ac2) 8%,var(--sf))}
+.cov{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:24px;flex:none;box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
+.sg{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.sg>div:first-child{display:flex;gap:14px;align-items:center;min-width:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.chips a{text-decoration:none;font-size:13px;padding:5px 11px;border-radius:99px;background:var(--bg);border:1px solid var(--bd);color:var(--tx)}
+.chips a:hover{border-color:var(--ac)}
+:root:root:root{--bg:#0e0a1f;--sf:#181230;--tx:#f2ecff;--mu:#a79bc9;--ac:#ff5c9d;--ac2:#ffc857;--ok:#35e0b0;--bd:#2d2552;--bad:#ff6b7a;color-scheme:dark}
+body{background:radial-gradient(800px 420px at 90% -8%,rgba(124,58,237,.45),transparent),radial-gradient(700px 420px at -10% 8%,rgba(255,92,157,.28),transparent),radial-gradient(600px 500px at 50% 110%,rgba(46,230,197,.15),transparent),var(--bg);background-attachment:fixed}
+header{background:linear-gradient(135deg,#6d28d9,#db2777 60%,#f59e0b);box-shadow:0 14px 40px -12px rgba(219,39,119,.6)}
+nav{background:color-mix(in srgb,var(--bg) 75%,transparent)}
+nav button{background:var(--sf);border-color:var(--bd);color:var(--tx)}
+nav button.on{background:linear-gradient(135deg,#8b5cf6,#ff5c9d);box-shadow:0 6px 18px -4px rgba(255,92,157,.6)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent),var(--sf);box-shadow:0 10px 30px -16px #000}
+button.b{background:linear-gradient(135deg,#8b5cf6,#ff5c9d);box-shadow:0 6px 16px -6px rgba(255,92,157,.7)}
+.add{border-color:#8b5cf6;background:color-mix(in srgb,#8b5cf6 12%,var(--sf))}
+.es{color:#fff}.w:hover,.tag{color:#1a1230}
+.ref{background:rgba(139,92,246,.14);border-left-color:var(--ac)}
+.bar i{background:linear-gradient(90deg,#35e0b0,#8b5cf6)}
+::placeholder{color:#7d72a3}a{color:#7de3ff}.chips a{color:var(--tx)}
+.ph{font-style:italic;color:#7de3ff;margin-top:6px;font-size:15px}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes flt{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+@keyframes wv{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes drift{0%{transform:translateY(105vh) rotate(0);opacity:0}10%{opacity:.35}90%{opacity:.25}100%{transform:translateY(-12vh) rotate(40deg);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@keyframes grow{from{width:0}}@keyframes out{to{opacity:0;visibility:hidden}}
+header{background-size:220% 220%;animation:flow 10s ease infinite}
+header>*{position:relative;z-index:1}
+.brand{display:flex;gap:14px;align-items:center}.brand small{display:block;opacity:.92;font-size:13px}
+.logo{width:60px;height:60px;flex:none;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4));animation:flt 3.5s ease-in-out infinite}
+.wv1{animation:wv 1.6s infinite}.wv2{animation:wv 1.6s .4s infinite}
+.wrap{position:relative;z-index:1}
+.notes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.notes span{position:absolute;bottom:0;color:var(--ac);opacity:0;animation:drift linear infinite}
+.card{animation:up .5s backwards}
+#v>*:nth-child(2){animation-delay:.06s}#v>*:nth-child(3){animation-delay:.12s}#v>*:nth-child(4){animation-delay:.18s}#v>*:nth-child(5){animation-delay:.24s}#v>*:nth-child(n+6){animation-delay:.3s}
+nav button{transition:transform .2s,box-shadow .2s}nav button:hover{transform:translateY(-2px)}nav button.on{animation:pop .35s}
+button.b{transition:transform .15s,filter .15s}button.b:hover{transform:translateY(-2px);filter:brightness(1.12)}button:active{transform:scale(.95)}
+.w{display:inline-block;transition:transform .15s,background .15s}.w:hover{transform:translateY(-2px) scale(1.08)}
+.cov{transition:transform .3s}.card:hover .cov{transform:rotate(-7deg) scale(1.1)}
+.bar i{animation:grow .9s cubic-bezier(.2,.8,.2,1) backwards}
+.big{animation:pop .4s}.pop{animation:up .3s}
+.splash{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);animation:out .6s 1.4s forwards}
+.splash .logo{width:120px;height:120px;animation:pop .8s,flt 3s .8s infinite}.splash b{font:800 36px Fraunces,Georgia,serif;background:linear-gradient(90deg,#ffc857,#ff5c9d);-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .8s .3s backwards}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+header{padding:14px 16px;border-radius:20px}header:after,.brand small{display:none}h1{font-size:24px}.logo{width:44px;height:44px}
+.stats{font-size:12px;padding:4px 10px}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 6px);background:rgba(24,18,48,.78);backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:18px;padding:5px;margin:10px 0;gap:4px;overflow:hidden}
+nav button{flex:1;padding:9px 4px;border:0;background:transparent;border-radius:13px;font-size:13.5px;box-shadow:none}
+.card{padding:12px;margin-bottom:10px}
+.addr{flex-wrap:nowrap;align-items:stretch}#nl{margin:0;min-height:46px;height:46px;resize:none;flex:1}
+.song{flex-wrap:nowrap;cursor:default}.song>div:first-child{flex:1;cursor:pointer}.cov{width:44px;height:44px;font-size:20px;border-radius:13px}
+.tx{min-width:0}.tx b{display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ic{gap:6px;flex-wrap:nowrap}.ib{min-width:34px;height:34px;padding:0 8px;display:grid;place-items:center;border:1px solid var(--bd);border-radius:10px;background:transparent;color:var(--tx);text-decoration:none;font:inherit;font-size:14px;cursor:pointer}
+.tp{color:#ffc857}.tr{color:#ff5c9d;letter-spacing:1px}.rr summary{cursor:pointer;font-weight:700}.rl{margin:10px 0}.rr .ib{display:inline-grid;height:30px;margin:2px 4px 2px 0}
+nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{flex:0 0 auto;padding:9px 13px}
+details.card summary{cursor:pointer}details.card[open] summary{margin-bottom:8px}.lg ul{margin:6px 0 0;padding-left:18px}.lg li{margin:3px 0}
+.qo{display:block;width:100%;text-align:left;margin:8px 0;padding:13px 14px;font-size:15px}
+#dock{position:fixed;left:0;right:0;margin:0 auto;bottom:0;width:100%;max-width:760px;z-index:50;background:var(--sf);border:1px solid var(--bd);border-radius:18px 18px 0 0;box-shadow:0 -10px 30px -10px #000;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
+#dock .dh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}#dock .dh b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+#dock iframe{width:100%;height:210px;border:0;border-radius:12px;display:block;background:#000}
+#dock.min iframe{height:1px;opacity:0;pointer-events:none;margin:0}
+body.dk .wrap{padding-bottom:300px}body.dk.mn .wrap{padding-bottom:90px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand"><svg class="logo" viewBox="0 0 64 64" aria-label="Logo Cancionero"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc857"/><stop offset="1" stop-color="#ff5c9d"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="19" fill="#150f2b" stroke="url(#lg)" stroke-width="2.5"/><path d="M24 44V22l17-4v22" fill="none" stroke="url(#lg)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="45" r="5.5" fill="url(#lg)"/><circle cx="37" cy="41" r="5.5" fill="url(#lg)"/><path class="wv1" d="M48 25q4 5 0 10" fill="none" stroke="#7de3ff" stroke-width="2.5" stroke-linecap="round"/><path class="wv2" d="M53 21q8 9 0 18" fill="none" stroke="#7de3ff" stroke-width="2.5" stroke-linecap="round"/></svg><div><h1>Cancionero</h1><small>Apprends l’espagnol en chantant</small></div></div><div class="row" style="gap:6px;flex-wrap:nowrap"><div class="stats" id="st"></div><a class="stats" href="../#choose" style="text-decoration:none" title="Changer de langue">🌍</a></div></header>
+<nav id="nav"></nav>
+<main id="v"></main>
+</div>
+<script>
+const TABS=[['songs','Chansons'],['tr','Traduire'],['cl','Trous'],['voc','Vocabulaire'],['rev','Réviser']];
+let tab='songs',S={songs:[],vocab:[],streak:0,last:'',ex:0},cur=null,pop=null,card=null,show=false,clz=null;
+const mem={};
+function ld(){try{const r=localStorage.getItem('cancionero');if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+ if(!S.songs.length)S.songs.push({id:1,title:'Exemple original : Después de la chamba',artist:'Texte de démo (Mexique)',link:'',lines:[
+ ['¿Qué onda, wey? Hoy ando bien cansado,','Quoi de neuf, mec ? Aujourd’hui je suis vraiment crevé,'],
+ ['me quedé en la chamba hasta las ocho.','je suis resté au boulot jusqu’à huit heures.'],
+ ['No te preocupes, todo está chido,','Ne t’inquiète pas, tout est cool,'],
+ ['mañana nos vemos y echamos un taco.','demain on se voit et on mange un taco.']].map(l=>({es:l[0],fr:l[1]})),rate:{},my:{}})}
+function sv(){try{localStorage.setItem('cancionero',JSON.stringify(S))}catch(e){}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zñ]/g,'');
+const today=()=>new Date().toISOString().slice(0,10);
+function tick(){const t=today();if(S.last!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);S.streak=S.last===y?S.streak+1:1;S.last=t}S.ex++;sv()}
+function head(){document.getElementById('st').textContent='🔥 '+S.streak+' j · '+S.vocab.length+' mots · '+S.ex+' exercices';
+ document.getElementById('nav').innerHTML=TABS.map(t=>`<button class="${t[0]==tab?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join('')}
+function go(t){tab=t;pop=null;card=null;show=false;draw()}
+function song(){return S.songs.find(s=>s.id==cur)||S.songs[0]}
+function picker(){return `<select onchange="cur=this.value;clz=null;draw()">${S.songs.map(s=>`<option value="${s.id}" ${s.id==song().id?'selected':''}>${esc(s.title)}</option>`).join('')}</select>`}
+function words(l){return l.split(/([\p{L}’'-]+)/u).map((p,i)=>i%2?`<span class="w" onclick="wp(this.textContent)">${esc(p)}</span>`:esc(p)).join('')}
+function wp(w,c){pop={w:w.replace(/^[-’']+|[-’']+$/g,'').toLowerCase()};draw(true)}
+function dict(w){const q=encodeURIComponent(w);return `<a href="https://www.wordreference.com/esfr/${q}" target="_blank" rel="noopener">WordReference</a> · <a href="https://www.linguee.fr/francais-espagnol/search?query=${q}" target="_blank" rel="noopener">Linguee</a> · <a href="https://www.google.com/search?q=${q}+significado+jerga" target="_blank" rel="noopener">argot ?</a>`}
+function popup(){if(!pop)return'';return `<div class="card pop"><b class="es">${esc(pop.w)}</b><div class="mu">${dict(pop.w)}</div>
+<input id="pm" placeholder="Sens en français"><div class="row"><select id="pt" style="width:auto"><option value="mot">Mot</option><option value="expression">Expression</option><option value="argot">Argot / familier</option></select>
+<button class="b" onclick="addv()">Ajouter</button><button class="b g" onclick="pop=null;draw(true)">Fermer</button></div></div>`}
+function addv(){const m=document.getElementById('pm').value.trim();if(!m)return;
+ S.vocab.push({id:Date.now(),w:pop.w,tr:m,t:document.getElementById('pt').value,src:song().title,box:0,due:today()});pop=null;tick();draw(true)}
+function draw(keep){head();const y=window.scrollY;document.getElementById('v').innerHTML=({songs:vSongs,tr:vTr,cl:vCl,voc:vVoc,rev:vRev})[tab]();if(keep)window.scrollTo(0,y)}
+function vSongs(){return S.songs.map(s=>`<div class="card"><div class="row" style="justify-content:space-between"><div><b>${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length} lignes</div></div>
+<div class="row"><button class="b sm" onclick="cur=${s.id};go('tr')">Traduire</button>${s.link?`<a href="${esc(s.link)}" target="_blank" rel="noopener">▶ Écouter</a>`:''}<button class="b g sm" onclick="dels(${s.id})">✕</button></div></div></div>`).join('')+
+`<div class="card"><b>Ajouter une chanson</b><p class="mu">Colle les paroles de ta chanson préférée (récupérées sur un site de paroles légal). Astuce : choisis des styles natifs : reggaetón, cumbia, rap, corridos, rock latino…</p>
+<input id="n1" placeholder="Titre"><input id="n2" placeholder="Artiste"><input id="n3" placeholder="Lien pour écouter (YouTube, Spotify…) – optionnel">
+<textarea id="n4" placeholder="Paroles en espagnol (une ligne par vers)"></textarea>
+<textarea id="n5" placeholder="Traduction de référence (optionnel, même nombre de lignes) pour t’auto-corriger"></textarea>
+<button class="b" onclick="adds()">Enregistrer</button></div>`}
+function adds(){const g=i=>document.getElementById('n'+i).value;const es=g(4).split('\n').map(x=>x.trim()).filter(Boolean),fr=g(5).split('\n').map(x=>x.trim()).filter(Boolean);
+ if(!g(1).trim()||!es.length){alert('Il faut au moins un titre et des paroles.');return}
+ const s={id:Date.now(),title:g(1).trim(),artist:g(2).trim()||'—',link:g(3).trim(),lines:es.map((e,i)=>({es:e,fr:fr.length==es.length?fr[i]:''})),rate:{},my:{}};
+ S.songs.push(s);cur=s.id;tick();go('tr')}
+function dels(id){if(confirm('Supprimer cette chanson ?')){S.songs=S.songs.filter(s=>s.id!=id);if(!S.songs.length)ld();sv();draw()}}
+function vTr(){const s=song(),n=Object.keys(s.rate).length;
+ return picker()+`<p class="mu">Clique sur un mot pour le noter dans ton vocabulaire. Traduis chaque vers à ta façon, puis compare.</p><div class="bar"><i style="width:${n/s.lines.length*100}%"></i></div>`+
+ s.lines.map((l,i)=>`<div class="card"><div class="es">${words(l.es)}</div>
+ <textarea style="min-height:48px" placeholder="Ta traduction…" oninput="song().my[${i}]=this.value;sv()">${esc(s.my[i]||'')}</textarea>
+ <div class="row"><button class="b g sm" onclick="rv(${i})">Voir la traduction</button><span class="mu">Auto-évaluation :</span>
+ ${[['✓','ok'],['~','mid'],['✗','ko']].map(r=>`<button class="b sm ${s.rate[i]==r[1]?'':'g'}" onclick="rt(${i},'${r[1]}')">${r[0]}</button>`).join('')}</div>
+ <div id="r${i}"></div></div>`).join('')+popup()}
+function rv(i){const l=song().lines[i];document.getElementById('r'+i).innerHTML=`<div class="ref">${l.fr?esc(l.fr):'<span class="mu">Pas de traduction de référence. Compare avec : '+dict(l.es)+'</span>'}</div>`}
+function rt(i,r){song().rate[i]=r;tick();draw(true)}
+function vCl(){const s=song();
+ if(!clz)clz={lv:30,res:false};
+ const html=s.lines.map((l,i)=>`<div class="card cl es">${l.es.split(/([\p{L}’'-]+)/u).map((p,k)=>{if(k%2&&p.length>3&&clz.mask(i,k)){return `<input data-a="${esc(p)}" size="${p.length}" autocapitalize="off" autocomplete="off">`}return esc(p)}).join('')}</div>`).join('');
+ return picker()+`<div class="card"><div class="row"><span>Difficulté : <b id="lv">${clz.lv}</b> % de mots cachés</span><input type="range" min="10" max="80" value="${clz.lv}" style="width:140px" onchange="clz.lv=+this.value;clz.seed=null;draw()"><button class="b g sm" onclick="clz.seed=null;draw()">Nouveau tirage</button></div>
+ <p class="mu">Écoute la chanson, puis retrouve les mots manquants (accents facultatifs).</p></div>`+html+`<div class="row"><button class="b" onclick="chk()">Vérifier</button><span id="sc" class="mu"></span></div>`}
+function chk(){let ok=0,t=0;document.querySelectorAll('.cl input').forEach(i=>{t++;const g=norm(i.value)==norm(i.dataset.a);i.className=g?'ok':'ko';if(g)ok++;else i.title=i.dataset.a});document.getElementById('sc').textContent=ok+' / '+t+' (les erreurs montrent la réponse au survol)';tick();head()}
+function vVoc(){return `<p class="mu">${S.vocab.length} entrée(s). Clique sur un mot dans « Traduire » pour en ajouter.</p>`+S.vocab.map(v=>`<div class="card row" style="justify-content:space-between"><div><b>${esc(v.w)}</b> <span class="tag">${v.t}</span><div>${esc(v.tr)}</div><div class="mu">${esc(v.src)}</div></div><button class="b g sm" onclick="delv(${v.id})">✕</button></div>`).join('')}
+function delv(id){S.vocab=S.vocab.filter(v=>v.id!=id);sv();draw()}
+function vRev(){const d=S.vocab.filter(v=>v.due<=today());
+ if(!S.vocab.length)return '<div class="card">Ajoute d’abord des mots depuis une chanson.</div>';
+ if(!d.length)return '<div class="card big">🎉 Rien à réviser aujourd’hui !</div>';
+ card=card||d[0];const v=card;
+ return `<p class="mu">${d.length} carte(s) à réviser · boîte ${v.box+1}/5</p><div class="card"><div class="big">${esc(v.w)}</div>`+
+ (show?`<div class="big" style="color:var(--ac);padding-top:0">${esc(v.tr)}</div><div class="mu" style="text-align:center">${esc(v.src)}</div><div class="row" style="justify-content:center;margin-top:12px"><button class="b" onclick="ans(1)">Je savais ✓</button><button class="b g" onclick="ans(0)">À revoir ✗</button></div>`:`<div class="row" style="justify-content:center"><button class="b" onclick="show=true;draw()">Afficher la réponse</button></div>`)+'</div>'}
+function ans(k){const v=S.vocab.find(x=>x.id==card.id),I=[0,1,3,7,16];v.box=k?Math.min(4,v.box+1):0;v.due=new Date(Date.now()+I[v.box]*864e5).toISOString().slice(0,10);card=null;show=false;tick();draw()}
+const _vc=vCl;
+vCl=function(){if(!clz||!clz.seed){clz=clz||{lv:30};clz.seed=Math.random()*1e9|0;const m={};clz.mask=(i,k)=>{const key=i+'_'+k;if(!(key in m)){let x=Math.sin(clz.seed+i*131+k*17)*1e4;m[key]=(x-Math.floor(x))*100<clz.lv}return m[key]}}return _vc()};
+let _n=0,pend=null;
+const cap=s=>s.replace(/\b\w/g,c=>c.toUpperCase());
+function guess(u){let p='Lien',t='',a='';try{const x=new URL(u),h=x.hostname.replace('www.',''),q=x.pathname.split('/').filter(Boolean),dn=z=>decodeURIComponent(z||'').replace(/-/g,' ');
+ if(/youtu/.test(h))p='YouTube';else if(/spotify/.test(h))p='Spotify';else if(/deezer/.test(h))p='Deezer';else if(/apple/.test(h))p='Apple Music';else if(/soundcloud/.test(h)){p='SoundCloud';a=dn(q[0]);t=dn(q[1])}
+ else if(/genius/.test(h)){p='Genius';t=dn(q[0]).replace(/ lyrics$/i,'')}else if(/musixmatch/.test(h)){p='Musixmatch';t=dn(q[q.length-1]);a=dn(q[q.length-2])}}catch(e){}
+ return{p,t,a,u}}
+function mk(g,lines){g=g||{p:'Texte',t:'',a:'',u:''};return{id:Date.now()*10+(_n++%10),title:cap(g.t)||('Chanson '+g.p),artist:cap(g.a)||g.p,link:g.u,lines:lines.map(es=>({es,fr:''})),rate:{},my:{}}}
+function addl(){const L=document.getElementById('nl').value.split('\n').map(x=>x.trim()).filter(Boolean);if(!L.length)return;
+ const U=L.filter(x=>/^https?:\/\//i.test(x)),T=L.filter(x=>!/^https?:\/\//i.test(x));
+ const m=U.length?U.map(u=>mk(guess(u),U.length==1?T:[])):[mk(null,T)];
+ S.songs.push(...m);cur=m[m.length-1].id;tick();go(m.length==1?'tr':'songs')}
+function bar(s){const q=encodeURIComponent(s.title+' '+s.artist+' letra');return `<div class="chips">${s.link?`<a href="${esc(s.link)}" target="_blank" rel="noopener">▶ Écouter</a>`:''}<a href="https://genius.com/search?q=${q}" target="_blank" rel="noopener">📜 Paroles (Genius)</a><a href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener">🔎 Google</a></div>`}
+function pasteBox(s){return `<div class="card add"><b class="ttl">${s.lines.length?'Modifier la chanson':'Dernière étape : les paroles'}</b><p class="mu">Ouvre une page de paroles avec les liens ci-dessous, copie-les puis colle-les ici.</p>${bar(s)}
+<input id="pt2" value="${esc(s.title)}" placeholder="Titre"><input id="pa" value="${esc(s.artist)}" placeholder="Artiste">
+<textarea id="pl" placeholder="Paroles en espagnol (une ligne par vers)">${esc(s.lines.map(l=>l.es).join('\n'))}</textarea>
+<textarea id="pf" placeholder="Traduction de référence (optionnel, même nombre de lignes)">${esc(s.lines.map(l=>l.fr).filter(Boolean).join('\n'))}</textarea>
+<button class="b" onclick="savel()">Enregistrer</button></div>`}
+function savel(){const s=song(),g=i=>document.getElementById(i).value,K=i=>g(i).split('\n').map(x=>x.trim()).filter(Boolean),es=K('pl'),fr=K('pf');
+ s.title=g('pt2').trim()||s.title;s.artist=g('pa').trim()||s.artist;if(es.length)s.lines=es.map((e,i)=>({es:e,fr:fr.length==es.length?fr[i]:''}));s.edit=false;tick();draw()}
+vSongs=function(){return `<div class="card add"><b class="ttl">✨ Ajouter des chansons</b><p class="mu">Colle un ou plusieurs liens, un par ligne (YouTube, Spotify, Genius, Musixmatch…). L’appli reconnaît la plateforme et devine le titre quand c’est possible. Tu peux aussi coller directement des paroles.</p>
+<textarea id="nl" placeholder="https://…"></textarea><button class="b" onclick="addl()">Ajouter</button></div>`+
+ S.songs.map(s=>{const h=[...s.title].reduce((a,c)=>a+c.charCodeAt(0),0)%360;return `<div class="card sg"><div><div class="cov" style="background:linear-gradient(135deg,hsl(${h},70%,52%),hsl(${(h+45)%360},80%,60%))">♪</div><div style="min-width:0"><b class="es">${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length?s.lines.length+' lignes':'<span class="tag">paroles à ajouter</span>'}</div></div></div>
+<div class="row"><button class="b sm" onclick="cur=${s.id};go('tr')">${s.lines.length?'Traduire':'Ajouter les paroles'}</button>${s.link?`<a href="${esc(s.link)}" target="_blank" rel="noopener">▶</a>`:''}<button class="b g sm" onclick="cur=${s.id};song().edit=true;go('tr')">✏️</button><button class="b g sm" onclick="dels(${s.id})">${pend==s.id?'Sûr ?':'✕'}</button></div></div>`}).join('')};
+dels=function(id){if(pend==id){S.songs=S.songs.filter(s=>s.id!=id);pend=null;if(!S.songs.length)ld();sv()}else pend=id;draw()};
+const _t=vTr,_c=vCl;
+vTr=function(){const s=song();if(!s.lines.length||s.edit)return picker()+pasteBox(s);const h=_t(),p=picker();return p+bar(s)+h.slice(p.length)};
+vCl=function(){const s=song();if(!s.lines.length)return picker()+pasteBox(s);return _c()};
+pasteBox=function(s){return `<div class="card add"><b class="ttl">${s.lines.length?'Modifier les paroles':'Colle les paroles'}</b><p class="mu">Ouvre les paroles avec un bouton, copie-les, colle-les ici. C’est tout.</p>${bar(s)}
+<textarea id="pl" style="min-height:150px" placeholder="Paroles en espagnol (une ligne par vers)">${esc(s.lines.map(l=>l.es).join('\n'))}</textarea>
+<button class="b" onclick="savel()">Enregistrer</button>
+<details style="margin-top:12px"><summary class="mu">Titre et artiste (facultatif)</summary><input id="pt2" value="${esc(s.title)}" placeholder="Titre"><input id="pa" value="${esc(s.artist)}" placeholder="Artiste"></details></div>`};
+savel=function(){const s=song(),g=i=>document.getElementById(i).value,es=g('pl').split('\n').map(x=>x.trim()).filter(Boolean),old=s.lines;
+ s.title=g('pt2').trim()||s.title;s.artist=g('pa').trim()||s.artist;if(es.length)s.lines=es.map((e,i)=>({es:e,fr:(old[i]&&old[i].es==e)?old[i].fr:''}));s.edit=false;tick();draw()};
+let SM=null;
+(async()=>{try{SM=window.claude?await window.claude.use('sample'):null}catch(e){}if(SM)draw(true)})();
+async function fb(i,btn){const s=song(),l=s.lines[i];btn.disabled=true;btn.textContent='Claude réfléchit…';s.fb=s.fb||{};
+ try{const r=await SM('Tu es un prof d\u2019espagnol natif qui aide un francophone à apprendre avec des chansons. Vers : « '+l.es+' ». Sa traduction : « '+(s.my[i]||'(aucune)')+' ». Réponds en français, 5 phrases maximum : ce qui est juste ou faux dans sa traduction, le sens naturel du vers, et surtout l\u2019argot, les expressions et le registre (avec le pays d\u2019origine si pertinent).',{modelTier:'quick'});s.fb[i]=r.text;sv()}
+ catch(e){s.fb[i]='Indisponible pour le moment ('+(e.code||'erreur')+').'}draw(true)}
+const _d=draw;draw=function(k){_d(k);if(tab=='tr'&&SM){const s=song();document.querySelectorAll('#v [id^="r"]').forEach(d=>{if(!/^r\d+$/.test(d.id))return;const i=+d.id.slice(1);
+ const b=document.createElement('button');b.className='b sm';b.style.marginTop='8px';b.textContent='🤖 Corriger et expliquer avec Claude';b.onclick=()=>fb(i,b);d.before(b);
+ if(s.fb&&s.fb[i]){const f=document.createElement('div');f.className='ref';f.innerHTML=esc(s.fb[i]).replace(/\n/g,'<br>');d.before(f)}})}};
+const AC=[['es-ES','Espagne'],['es-MX','Mexique'],['es-AR','Argentine'],['es-US','Latino USA']];
+function say(t){try{const u=new SpeechSynthesisUtterance(t),L=S.acc||'es-ES',V=speechSynthesis.getVoices();u.lang=L;u.rate=S.slow?0.55:0.95;u.voice=V.find(v=>v.lang.replace('_','-')==L)||V.find(v=>v.lang.startsWith('es'))||null;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function ph(w){let s=w.toLowerCase().replace(/[’']/g,'');const th=(S.acc||'es-ES')=='es-ES'?'¢':'s';
+ [[/qu(?=[eéií])/g,'k'],[/gu(?=[eéií])/g,'g'],[/gü/g,'gou'],[/ch/g,'§'],[/ll/g,'y'],[/ñ/g,'gn'],[/g(?=[eéií])/g,'¤'],[/j/g,'¤'],[/c(?=[eéií])/g,th],[/[zç]/g,th],[/c/g,'k'],[/h/g,''],[/[vw]/g,'b'],[/x/g,'ks'],[/u/g,'ou'],[/y(?![aeiouáéíóú])/g,'i'],[/á/g,'A'],[/é/g,'É'],[/í/g,'I'],[/ó/g,'O'],[/ú/g,'OU'],[/e/g,'é']].forEach(r=>s=s.replace(r[0],r[1]));
+ return s.replace(/§/g,'tch').replace(/¤/g,'kh').replace(/¢/g,'th')}
+function phl(t){return t.split(/([\p{L}’'-]+)/u).map((p,i)=>i%2?ph(p):p).join('')}
+function mkb(t,lbl){const b=document.createElement('button');b.className='b g sm';b.textContent=lbl||'🔊';b.onclick=()=>say(t);return b}
+function mkp(t){const p=document.createElement('span');p.className='ph';p.textContent=' ['+phl(t)+'] ';return p}
+function deco2(){const s=song();
+ if(tab=='tr'){const rs=[...document.querySelectorAll('#v [id^="r"]')].filter(d=>/^r\d+$/.test(d.id));if(!rs.length)return;
+  const c=document.createElement('div');c.className='card row';
+  c.innerHTML='<span>🔊 Accent</span><select style="width:auto" onchange="S.acc=this.value;sv();draw(true)">'+AC.map(a=>`<option value="${a[0]}" ${(S.acc||'es-ES')==a[0]?'selected':''}>${a[1]}</option>`).join('')+'</select><label><input type="checkbox" style="width:auto" '+(S.slow?'checked':'')+' onchange="S.slow=this.checked;sv()"> Lent</label><label><input type="checkbox" style="width:auto" '+(S.pho?'checked':'')+' onchange="S.pho=this.checked;sv();draw(true)"> Prononciation</label><div class="mu" style="width:100%">Lecture par la voix de ton appareil. Prononciation figurée à la française : « kh » = j espagnol, « ou » = u, majuscule = accent écrit.</div>';
+  document.querySelector('#v select').after(c);
+  rs.forEach(d=>{const i=+d.id.slice(1),l=s.lines[i];if(!l)return;const b=mkb(l.es,'🔊 Écouter');b.style.marginTop='8px';d.before(b);
+   if(S.pho){const p=mkp(l.es);p.style.display='block';d.before(p)}})}
+ if(tab=='voc')document.querySelectorAll('#v .card').forEach((c,i)=>{const v=S.vocab[i],b=c.querySelector('b');if(v&&b)b.after(' ',mkb(v.w),mkp(v.w))});
+ if(tab=='rev'&&card){const g=document.querySelector('#v .big');if(g){const d=document.createElement('div');d.append(mkb(card.w,'🔊 Écouter'),mkp(card.w));d.style.fontSize='16px';g.after(d)}}
+ const pb=document.querySelector('.pop b.es');if(pb&&pop)pb.after(' ',mkb(pop.w),mkp(pop.w))}
+const _d2=draw;draw=function(k){_d2(k);try{deco2()}catch(e){}};
+(function(){const n=document.createElement('div');n.className='notes';n.innerHTML=['♪','♫','♬','♩','♪','♫','♬','♩'].map((c,i)=>`<span style="left:${6+i*12}%;font-size:${18+i%3*10}px;animation-duration:${14+i*2.3}s;animation-delay:${-i*3.1}s">${c}</span>`).join('');document.body.prepend(n);
+ const sp=document.createElement('div');sp.className='splash';sp.innerHTML=document.querySelector('.logo').outerHTML+'<b>Cancionero</b>';document.body.append(sp);setTimeout(()=>sp.remove(),2200)})();
+function boom(n){n=n||30;const E=['🎉','✨','🎶','⭐','💃','🎸'];for(let i=0;i<n;i++){const s=document.createElement('span');s.textContent=E[i%6];s.style.cssText=`position:fixed;top:-30px;left:${Math.random()*100}vw;font-size:${16+Math.random()*18}px;z-index:99;pointer-events:none;animation:fall ${1.6+Math.random()*1.6}s ease-in forwards`;document.body.append(s);setTimeout(()=>s.remove(),3500)}}
+const _ck=chk;chk=function(){_ck();const i=[...document.querySelectorAll('.cl input')];if(i.length&&i.every(x=>x.classList.contains('ok')))boom()};
+const _an=ans;ans=function(k){_an(k);if(k)boom(10)};
+head=function(){document.getElementById('st').textContent='🔥 '+S.streak+' j · '+S.vocab.length+' mots';document.getElementById('nav').innerHTML=TABS.map(t=>`<button class="${t[0]==tab?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join('')};TABS[3][1]='Mots';
+vSongs=function(){return `<div class="card row addr"><textarea id="nl" rows="1" placeholder="＋ Colle un lien ou des paroles…"></textarea><button class="b" onclick="addl()">Ajouter</button></div>`+
+ S.songs.map(s=>{const h=[...s.title].reduce((a,c)=>a+c.charCodeAt(0),0)%360;return `<div class="card sg song"><div onclick="cur=${s.id};go('tr')"><div class="cov" style="background:linear-gradient(135deg,hsl(${h},70%,52%),hsl(${(h+45)%360},80%,60%))">♪</div><div class="tx"><b class="es">${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length?s.lines.length+' lignes':'<span class="tag">paroles à ajouter</span>'}</div></div></div>
+<div class="row ic">${s.link?`<a class="ib" href="${esc(s.link)}" target="_blank" rel="noopener">▶</a>`:''}<button class="ib" onclick="cur=${s.id};song().edit=true;go('tr')">✏️</button><button class="ib" onclick="dels(${s.id})">${pend==s.id?'Sûr ?':'✕'}</button></div></div>`}).join('')};
+const _ph=ph;ph=function(w){let s=w.toLowerCase().replace(/rr/g,'¶').replace(/^r/,'¶').replace(/([nls])r/g,'$1¶');return _ph(s).replace(/¶/g,'rrr')};
+mkp=function(t){const p=document.createElement('span');p.className='ph';p.innerHTML=' ['+esc(phl(t)).replace(/rrr|r/g,m=>`<b class="${m=='r'?'tp':'tr'}">${m}</b>`)+'] ';return p};
+const _d3=draw;draw=function(k){_d3(k);try{if(tab!='tr')return;const sel=document.querySelector('#v .card.row select');if(!sel)return;const B=(t,l)=>`<button class="ib" data-t="${t}" onclick="say(this.dataset.t)">🔊 ${l||t}</button>`;
+ sel.closest('.card').insertAdjacentHTML('afterend',`<details class="card rr"><summary>🌀 Les 3 sons du R</summary>
+<div class="mu">Dans la prononciation : <b class="tp">r</b> = R simple, <b class="tr">rrr</b> = R roulée.</div>
+<div class="rl"><b class="tp">R simple</b> (pero, caro, para) : un seul petit battement de la pointe de la langue contre le palais, juste derrière les dents du haut, comme un « d » très rapide. ${B('pero')}${B('caro')}${B('para')}</div>
+<div class="rl"><b class="tr">R roulée</b> : on l’écrit rr (perro, carro), ou r au début d’un mot (rojo, rápido), ou après n, l, s (honra, alrededor). La langue vibre plusieurs fois, comme un petit moteur. ${B('perro')}${B('rojo')}${B('honra')}</div>
+<div class="rl"><b class="tp">R en fin de syllabe</b> (comer, parte, mar) : un battement léger, parfois à peine entendu. ${B('comer')}${B('parte')}${B('mar')}</div>
+<div class="rl">⚠️ Un seul r change tout le mot. À écouter en comparant : ${B('pero')}${B('perro')} · ${B('caro')}${B('carro')} · ${B('cero')}${B('cerro')} · ${B('coro')}${B('corro')}</div>
+<div class="rl">Entraînement (virelangue) : ${B('El perro de San Roque no tiene rabo, porque Ramón Ramírez se lo ha cortado.','Écouter la phrase')}</div></details>`)}catch(e){}};
+TABS.push(['les','Leçons'],['pro','Prononc.'],['log','Log']);
+const SB=(t,l)=>`<button class='ib' data-t='${esc(t).replace(/'/g,'&#39;')}' onclick='say(this.dataset.t)'>🔊 ${esc(l||t)}</button>`;
+const SX=a=>a.map(x=>SB(x)).join('');
+function phh(t){return esc(phl(t)).replace(/rrr|r/g,m=>`<b class='${m=='r'?'tp':'tr'}'>${m}</b>`)}
+const LES=[
+{id:'arg',ic:'🗣️',t:'Argot et mots de rue',p:'Les chansons utilisent l’argot local, et un même mot change de sens selon le pays. Repère d’où vient l’artiste.',ex:[['¿Qué onda, wey?','Quoi de neuf, mec ? (Mexique)'],['Esto está chido.','C’est cool. (Mexique)'],['Me voy a la chamba.','Je vais au boulot. (Mexique)'],['Qué guay, tío.','Trop bien, mec. (Espagne)'],['Che, ¿vamos al laburo?','Hé, on va au boulot ? (Argentine)'],['Mi parcero es el mejor.','Mon pote est le meilleur. (Colombie)']]},
+{id:'rac',ic:'✂️',t:'Mots raccourcis à l’oral',p:'En chanson, on avale des lettres, surtout le d et le s final. Les reconnaître t’aide à comprendre sans lire les paroles.',ex:[['Pa’ ti','Pour toi (pa’ = para)'],['Estoy cansao.','Je suis fatigué (cansao = cansado).'],['Ta’ bien.','C’est bon (ta’ = está).'],['No hay na’.','Il n’y a rien (na’ = nada).'],['¿Pa’ dónde vas?','Où vas-tu ?']]},
+{id:'ser',ic:'⚖️',t:'Ser ou estar ?',p:'Ser dit ce que l’on est (identité, nature). Estar dit comment on est (état, lieu).',ex:[['Soy mexicano.','Je suis mexicain.'],['Estoy cansado.','Je suis fatigué.'],['Es guapa.','Elle est belle (de nature).'],['Está guapa hoy.','Elle est belle aujourd’hui.'],['La fiesta es en mi casa.','La fête a lieu chez moi (événement = ser).']]},
+{id:'sub',ic:'💭',t:'Le subjonctif dans les chansons',p:'Les chansons parlent de désirs et d’espoirs. On y croise le subjonctif après ojalá, quiero que, para que, aunque.',ex:[['Ojalá que vuelvas.','J’espère que tu reviendras.'],['Quiero que me escuches.','Je veux que tu m’écoutes.'],['Aunque llueva, bailamos.','Même s’il pleut, on danse.'],['Te lo digo para que lo sepas.','Je te le dis pour que tu le saches.']]},
+{id:'con',ic:'🧩',t:'Petits mots qui reviennent partout',p:'Ces mots de liaison et expressions courtes apparaissent dans presque toutes les chansons.',ex:[['O sea, no sé.','Enfin, je ne sais pas.'],['A lo mejor mañana.','Peut-être demain.'],['Ahorita vengo.','J’arrive tout de suite (Amérique latine).'],['Vale, hecho.','D’accord, marché conclu (Espagne).'],['Dale, vamos.','Allez, on y va (Amérique latine).'],['Pues nada.','Bon, eh bien… (pour conclure)']]},
+{id:'faux',ic:'⚠️',t:'Faux amis',p:'Des mots qui ressemblent au français, mais qui veulent dire autre chose.',ex:[['Está embarazada.','Elle est enceinte (≠ embarrassée).'],['Compré ropa nueva.','J’ai acheté des vêtements (≠ robe).'],['Es un camino largo.','C’est un long chemin (≠ large).'],['Estoy constipado.','Je suis enrhumé (≠ constipé).'],['Un buen rato.','Un bon moment (≠ rat).'],['Escribí una carta.','J’ai écrit une lettre (≠ carte).']]},
+{id:'met',ic:'🎧',t:'Méthode pour apprendre avec une chanson',p:'1) Écoute sans lire. 2) Lis les paroles et clique sur les mots inconnus. 3) Traduis un vers à la fois. 4) Refais l’exercice à trous. 5) Révise tes mots le lendemain. Reste sur 1 ou 2 chansons à la fois : mieux vaut les connaître à fond.',ex:[]}];
+function vLes(){S.done=S.done||{};const n=LES.filter(l=>S.done[l.id]).length;
+ return `<div class='card'><b class='ttl'>🎓 Leçons</b><div class='mu'>De mini-leçons pour comprendre l’espagnol des chansons. Ouvre, écoute, coche quand c’est acquis.</div><div class='bar'><i id='lp' style='width:${n/LES.length*100}%'></i></div><div class='mu' id='lc'>${n} / ${LES.length} terminées</div></div>`+
+ LES.map(l=>`<details class='card'><summary><b>${l.ic} ${l.t}</b></summary><p>${l.p}</p>${l.ex.map(e=>`<div class='rl'>${SB(e[0])} <span class='mu'>${e[1]}</span><div class='ph' style='margin:2px 0 0'>[ ${phh(e[0])} ]</div></div>`).join('')}<label class='row' style='margin-top:8px'><input type='checkbox' style='width:auto' ${S.done[l.id]?'checked':''} data-i='${l.id}' onchange='ld2(this.dataset.i,this.checked)'> Leçon comprise</label></details>`).join('')}
+function ld2(id,v){S.done[id]=v;sv();const n=LES.filter(l=>S.done[l.id]).length;document.getElementById('lp').style.width=n/LES.length*100+'%';document.getElementById('lc').textContent=n+' / '+LES.length+' terminées'}
+const CO=[['h','muette (ne se prononce pas)',['hola','hermano']],['j','« kh », comme le ch allemand de Bach',['rojo','jugar']],['g + e, i','« kh »',['gente','girar']],['g + a, o, u','« g » dur',['gato','amigo']],['gue, gui','« g » (le u est muet)',['guitarra','guerra']],['c + e, i','« s » en Amérique, « th » en Espagne',['cielo','gracias']],['c + a, o, u','« k »',['casa','cuando']],['z','« s » en Amérique, « th » en Espagne',['zapato','lazo']],['ll, y','« y » (Argentine : « ch » doux, comme sh)',['calle','yo']],['ñ','« gn »',['año','niño']],['qu','« k » (le u est muet)',['quiero','porque']],['b, v','même son : « b »',['vaca','barco']],['ch','« tch »',['mucho','chico']],['d entre voyelles','très doux, proche du th anglais de this',['nada','cansado']],['x','« ks »',['examen','taxi']]];
+function vPro(){const A=S.acc||'es-ES';
+ return `<div class='card'><b class='ttl'>🔊 Prononciation</b><div class='row' style='margin-top:8px'><select style='width:auto' onchange='S.acc=this.value;sv();draw(true)'>${AC.map(a=>`<option value='${a[0]}' ${A==a[0]?'selected':''}>${a[1]}</option>`).join('')}</select><label><input type='checkbox' style='width:auto' ${S.slow?'checked':''} onchange='S.slow=this.checked;sv()'> Lent</label></div><div class='mu' style='margin-top:6px'>La voix vient de ton appareil. <b class='tp'>r</b> = R simple, <b class='tr'>rrr</b> = R roulée, « kh » = j, « ou » = u, majuscule = accent écrit.</div></div>
+<div class='card'><b>🧪 Laboratoire</b><input id='lab' placeholder='Tape un mot ou une phrase en espagnol…' oninput='labu()'><div class='row'><button class='b sm' onclick='say(document.getElementById(&quot;lab&quot;).value)'>🔊 Écouter</button></div><div id='lr' class='ph'></div></div>
+<details class='card' open><summary><b>🅰️ Les 5 voyelles</b></summary><p>Toujours pures et courtes, sans diphtongue : a = a, e = é, i = i, o = o, u = ou.</p>${SX(['casa','mesa','vino','solo','luna'])}</details>
+<details class='card'><summary><b>🔤 Consonnes à connaître</b></summary>${CO.map(c=>`<div class='rl'><b>${c[0]}</b> : ${c[1]} ${SX(c[2])}</div>`).join('')}</details>
+<details class='card'><summary><b>🌀 Les 3 sons du R</b></summary>
+<div class='rl'><b class='tp'>R simple</b> (pero, caro, para) : un seul battement de la pointe de la langue contre le palais, juste derrière les dents du haut, comme un d très rapide. ${SX(['pero','caro','para'])}</div>
+<div class='rl'><b class='tr'>R roulée</b> : rr (perro, carro), r au début d’un mot (rojo) ou après n, l, s (honra). La langue vibre plusieurs fois. ${SX(['perro','rojo','honra'])}</div>
+<div class='rl'><b class='tp'>R en fin de syllabe</b> (comer, parte, mar) : battement léger, parfois à peine entendu. ${SX(['comer','parte','mar'])}</div>
+<div class='rl'>Un seul r change le mot : ${SX(['pero','perro','caro','carro','cero','cerro','coro','corro'])}</div>
+<div class='rl'>Virelangue : ${SB('El perro de San Roque no tiene rabo, porque Ramón Ramírez se lo ha cortado.','Écouter la phrase')}</div></details>
+<details class='card'><summary><b>⚡ L’accent tonique</b></summary><p>Sans accent écrit : on appuie sur l’avant-dernière syllabe si le mot finit par une voyelle, n ou s (CAsa). Sinon, sur la dernière (verDAD). Un accent écrit marque l’exception et indique la syllabe forte (canCIÓN, MÚsica). Il distingue aussi des mots : está (il est) et esta (cette).</p>${SX(['casa','verdad','canción','música','está','esta'])}</details>
+<details class='card'><summary><b>🔗 L’enchaînement des voyelles</b></summary><p>À l’oral et en chanson, une voyelle finale se lie à la voyelle suivante : mi amor sonne comme miamor. C’est pour ça que les paroles semblent aller vite.</p>${SX(['mi amor','te amo','todo es amor','la otra vez'])}</details>
+<details class='card'><summary><b>🌎 Selon le pays</b></summary><p class='mu'>Change l’accent en haut pour comparer.</p><div class='rl'><b>Espagne</b> : c et z = « th ». ${SX(['gracias','cielo'])}</div><div class='rl'><b>Amérique latine</b> : c et z = « s ». ${SX(['gracias','cielo'])}</div><div class='rl'><b>Argentine, Uruguay</b> : ll et y = « ch » doux. ${SX(['yo me llamo','calle'])}</div><div class='rl'><b>Caraïbes, Chili, Andalousie</b> : le s final est souvent aspiré ou muet. ${SX(['los amigos','más o menos'])}</div><div class='rl'><b>Mexique</b> : s bien nette, voyelles faibles parfois avalées. ${SX(['ahorita','México'])}</div></details>`}
+function labu(){const v=document.getElementById('lab').value.trim();document.getElementById('lr').innerHTML=v?'[ '+phh(v)+' ]':''}
+const LOG=[['1.7',['Nouveaux onglets : Leçons, Prononciation et Log','Barre d’onglets défilante']],['1.6',['Prononciation des 3 sons du R (simple et roulée)','R colorés dans la prononciation figurée']],['1.5',['Page Chansons allégée','Barre d’onglets arrondie']],['1.4',['Logo, écran d’intro, animations, notes flottantes, confettis']],['1.3',['Prononciation : audio, accents (Espagne, Mexique, Argentine…), mode lent, transcription figurée']],['1.2',['Thème sombre violet et rose']],['1.1',['Ajout de chansons par lien','Correction par Claude (dans Claude.ai)']],['1.0',['Première version : chansons, traduction, trous, vocabulaire, révision']]];
+function vLog(){return LOG.map((l,i)=>`<div class='card lg'><b class='es'>Version ${l[0]}</b> ${i?'':`<span class='tag'>actuelle</span>`}<ul>${l[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}
+const VN={les:vLes,pro:vPro,log:vLog};
+const _d4=draw;draw=function(k){if(!VN[tab])return _d4(k);head();const y=window.scrollY;document.getElementById('v').innerHTML=VN[tab]();if(k)window.scrollTo(0,y)};
+LOG.unshift(['1.8',['Test de niveau de 20 questions (A1 à C1) au démarrage, refaisable dans l’onglet Niveau','Installation comme application, mode hors ligne','Téléchargement du fichier et sauvegarde de tes données']]);
+TABS.push(['niv','Niveau']);
+const QZ=[
+{l:'A1',q:'Complète : « Me ___ Ana. »',o:['llamo','llamas','llama','llaman']},
+{l:'A1',q:'Complète : « Yo ___ veinte años. »',o:['tengo','soy','estoy','hago']},
+{l:'A1',q:'Comment dit-on « merci » en espagnol ?',o:['Gracias','Perdón','Adiós','Hola']},
+{l:'A1',q:'Écoute. Où vit Carlos ?',t:'Me llamo Carlos y vivo en Madrid.',o:['À Madrid','À Barcelone','À Mexico','À Séville']},
+{l:'A2',q:'Complète : « Ayer ___ al cine con mis amigos. »',o:['fui','voy','iré','iba']},
+{l:'A2',q:'Complète : « Mi hermano es ___ que yo. »',o:['más alto','alto más','muy alto','tan altísimo']},
+{l:'A2',q:'Lis : « El tren sale a las ocho y cuarto. » À quelle heure part le train ?',o:['8 h 15','8 h 45','7 h 15','8 h 30']},
+{l:'A2',q:'Complète : « Busco ___ casa cerca del mar. »',o:['una','un','unos','uno']},
+{l:'B1',q:'Complète : « Si tuviera tiempo, ___ a visitarte. »',o:['iría','iré','iba','fuera']},
+{l:'B1',q:'Complète : « Cuando llegué, ellos ya ___. »',o:['se habían ido','se fueron','se irán','se van']},
+{l:'B1',q:'« Estoy harto de esperar » signifie :',o:['J’en ai assez d’attendre','J’ai faim d’attendre','Je suis content d’attendre','Je suis en retard']},
+{l:'B1',q:'Écoute. Que cherche cette personne, et pourquoi ?',t:'Perdona, ¿sabes si hay alguna farmacia por aquí cerca? Me duele mucho la cabeza.',o:['Une pharmacie, car elle a mal à la tête','Un médecin, car elle a mal au ventre','Un café, car elle est fatiguée','Une banque, car elle est perdue']},
+{l:'B2',q:'Complète : « Espero que mañana ___ buen tiempo. »',o:['haga','hace','hará','hizo']},
+{l:'B2',q:'Complète : « No creo que ___ razón. »',o:['tenga','tiene','tendrá','tenía']},
+{l:'B2',q:'Complète : « Se lo dije ___ no se enfadara. »',o:['para que','porque','aunque','pues']},
+{l:'B2',q:'Lis : « A pesar de que el proyecto parecía arriesgado, el equipo decidió seguir adelante. » Que fit l’équipe ?',o:['Elle continua malgré le risque','Elle abandonna le projet','Elle attendit','Elle changea de projet']},
+{l:'C1',q:'Complète : « Dudo que lo ___ terminado antes de que llegue el jefe. »',o:['hayan','han','habían','habrán']},
+{l:'C1',q:'« Me tiene sin cuidado lo que digan » signifie :',o:['Ce qu’ils disent m’est égal','Ce qu’ils disent m’inquiète','Je fais attention à ce qu’ils disent','Ce qu’ils disent me met en colère']},
+{l:'C1',q:'Complète : « Habría venido de no ___ tan tarde. »',o:['haberme enterado','enterarme','me enteré','me hubiera enterado']},
+{l:'C1',q:'« Estar en las nubes » signifie :',o:['Être distrait, rêveur','Être riche','Voyager en avion','Être malade']}];
+const LV=['A1','A2','B1','B2','C1'],LB={A0:'Débutant (pré-A1)',A1:'A1 · Découverte',A2:'A2 · Élémentaire',B1:'B1 · Seuil',B2:'B2 · Avancé',C1:'C1 · Autonome'},RC={A0:['met','ser','rac'],A1:['met','ser','rac'],A2:['ser','con','faux'],B1:['sub','con','faux'],B2:['arg','rac','sub'],C1:['arg','rac','faux']};
+let QS={i:-1,ans:[],p:[],show:false};
+function qstart(){QS={i:0,ans:[],p:QZ.map(q=>q.o.map((_,k)=>k).sort(()=>Math.random()-.5)),show:false};draw();window.scrollTo(0,0)}
+function qskip(){S.skip=true;sv();go('songs')}
+function qa(k){QS.ans[QS.i]=k;QS.i++;QS.show=false;if(QS.i>=QZ.length)qfin();draw();window.scrollTo(0,0)}
+function qfin(){const sc={};LV.forEach(l=>sc[l]=0);const wrong=[];QZ.forEach((q,i)=>{if(QS.ans[i]===0)sc[q.l]++;else wrong.push([q.q,QS.ans[i]>=0?q.o[QS.ans[i]]:'(sans réponse)',q.o[0]])});
+ let c='A0';for(const l of LV){if(sc[l]>=3)c=l;else break}
+ S.level={c,label:LB[c],sc,wrong,date:today()};S.skip=true;tick();setTimeout(()=>boom(c=='A0'?10:30),400)}
+function resH(L){return `<div class='card' style='text-align:center'><div class='mu'>Ton niveau estimé</div><div class='big' style='padding:8px'>${L.c=='A0'?'🌱':L.c}</div><b class='es'>${L.label}</b></div>
+<div class='card'><b>Détail par niveau</b>${LV.map(l=>`<div class='row' style='margin:8px 0'><span style='width:28px'>${l}</span><div class='bar' style='flex:1;margin:0'><i style='width:${L.sc[l]/4*100}%'></i></div><span>${L.sc[l]}/4</span></div>`).join('')}<p class='mu'>Un niveau est validé à partir de 3 bonnes réponses sur 4. Test indicatif, inspiré des niveaux du CECRL utilisés par les diplômes DELE et SIELE : il ne remplace pas un examen officiel.</p></div>
+<div class='card'><b>📚 Leçons conseillées</b>${RC[L.c].map(id=>`<div class='rl'>• ${LES.find(x=>x.id==id).t}</div>`).join('')}<div class='row' style='margin-top:8px'><button class='b' data-g='les' onclick='go(this.dataset.g)'>🎓 Ouvrir les leçons</button><button class='b g' data-g='songs' onclick='go(this.dataset.g)'>🎸 Mes chansons</button></div></div>
+<details class='card'><summary><b>🔍 Corrections (${L.wrong.length})</b></summary>${L.wrong.map(w=>`<div class='rl'><div>${w[0]}</div><div class='mu'>Ta réponse : ${esc(w[1])}</div><div style='color:var(--ok)'>Bonne réponse : ${esc(w[2])}</div></div>`).join('')||'<p>Aucune erreur, bravo !</p>'}</details>`}
+function vNiv(){const L=S.level;
+ if(QS.i>=QZ.length)return resH(L)+`<div class='row'><button class='b g' onclick='QS.i=-1;draw()'>Refaire le test</button></div>`;
+ if(QS.i<0)return `<div class='card'><b class='ttl'>🎯 Test de niveau</b><p>20 questions pour estimer ton niveau d’espagnol, de A1 à C1 (échelle CECRL). Grammaire, vocabulaire, lecture et deux questions d’écoute, comme dans les tests de placement et les examens DELE. Compte environ 10 minutes, sans dictionnaire.</p><div class='row'><button class='b' onclick='qstart()'>${L?'Refaire le test':'Commencer'}</button>${L?'':`<button class='b g' onclick='qskip()'>Passer pour l’instant</button>`}</div></div>`+(L?resH(L):'');
+ const q=QZ[QS.i];
+ return `<div class='card'><div class='mu'>Question ${QS.i+1} / ${QZ.length}</div><div class='bar'><i style='width:${QS.i/QZ.length*100}%'></i></div><p class='es' style='font-size:19px'>${q.q}</p>${q.t?`<div class='row'>${SB(q.t,'Écouter')}<button class='ib' onclick='QS.show=!QS.show;draw(true)'>👁 Texte</button></div>${QS.show?`<div class='ref'>${esc(q.t)}</div>`:''}`:''}${QS.p[QS.i].map(k=>`<button class='b g qo' onclick='qa(${k})'>${esc(q.o[k])}</button>`).join('')}<div class='row' style='margin-top:6px'><button class='ib' onclick='qa(-1)'>Je ne sais pas</button></div></div>`}
+VN.niv=vNiv;
+const _h=head;head=function(){_h();if(S.level)document.getElementById('st').textContent+=' · '+(S.level.c=='A0'?'Débutant':S.level.c)};
+let DP=null;const STAND=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();DP=e;if(tab=='songs'||tab=='log')draw(true)});
+window.addEventListener('appinstalled',()=>{DP=null;draw(true)});
+async function inst(){if(DP){DP.prompt();try{await DP.userChoice}catch(e){}DP=null;draw(true)}}
+function am(t){const e=document.getElementById('am');if(e)e.textContent=t}
+function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.append(a);a.click();a.remove()}
+async function dlself(){try{const r=await fetch(location.href.split('#')[0]);dl(await r.blob(),'cancionero.html');am('Fichier téléchargé.')}catch(e){am('Téléchargement indisponible ici : ouvre la version installée ou ton site.')}}
+function expd(){dl(new Blob([JSON.stringify(S)],{type:'application/json'}),'cancionero-donnees.json');am('Sauvegarde créée.')}
+function impd(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{S=Object.assign(S,JSON.parse(r.result));sv();draw();am('Données restaurées ✅')}catch(e){am('Fichier invalide.')}};r.readAsText(f)}
+function pick(){document.getElementById('imp').click()}
+function appCard(){const st=STAND();return `<div class='card'><b class='ttl'>📲 Application</b><p class='mu'>${st?'Tu utilises déjà la version installée ✅':'Installe Cancionero sur ton écran d’accueil : elle s’ouvre comme une vraie appli et fonctionne hors ligne.'}</p><div class='row'>${!st&&DP?`<button class='b' onclick='inst()'>📲 Installer l’application</button>`:''}<button class='b g' onclick='dlself()'>⬇️ Fichier .html</button><button class='b g' onclick='expd()'>💾 Sauvegarder mes données</button><button class='b g' onclick='pick()'>📂 Restaurer</button><input id='imp' type='file' accept='.json' style='display:none' onchange='impd(this)'></div><div id='am' class='mu' style='margin-top:6px'></div>${!st&&!DP?`<p class='mu'>Si le bouton d’installation n’apparaît pas : menu ⋮ de Chrome, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ». Sur iPhone : Partager, puis « Sur l’écran d’accueil ».</p>`:''}</div>`}
+const _vl=vLog;VN.log=function(){return appCard()+_vl()};
+const _vs=vSongs;vSongs=function(){return (DP&&!STAND()?`<div class='card row' style='justify-content:space-between'><span>📲 Installer l’appli sur ton téléphone</span><button class='b sm' onclick='inst()'>Installer</button></div>`:'')+_vs()};
+if('serviceWorker' in navigator&&location.protocol=='https:')navigator.serviceWorker.register('../sw.js').catch(()=>{});
+LOG.unshift(['1.9',['Paroles trouvées automatiquement à partir d’un lien ou d’un « Artiste - Titre » (la saisie manuelle reste disponible)','Lecteur intégré : YouTube, Spotify, SoundCloud, Deezer, sans quitter l’appli']]);
+const gen=['YouTube','Spotify','Deezer','Apple Music','SoundCloud','Genius','Musixmatch','Lien','Texte','Recherche'];
+function emb(u){try{const x=new URL(u),h=x.hostname.replace('www.',''),q=x.pathname.split('/').filter(Boolean);
+ if(h=='youtu.be')return{k:'yt',id:q[0]};
+ if(h.endsWith('youtube.com')){const v=x.searchParams.get('v');if(v)return{k:'yt',id:v};if(['shorts','embed','live'].includes(q[0]))return{k:'yt',id:q[1]}}
+ if(h=='open.spotify.com'){const i=q.findIndex(z=>['track','album','playlist','episode'].includes(z));if(i>=0&&q[i+1])return{k:'sp',t:q[i],id:q[i+1]}}
+ if(h.endsWith('soundcloud.com'))return{k:'sc',u};
+ if(h.endsWith('deezer.com')){const i=q.indexOf('track');if(i>=0)return{k:'dz',id:q[i+1]}}}catch(e){}return null}
+function esrc(e){if(e.k=='yt')return 'https://www.youtube.com/embed/'+e.id+'?autoplay=1&playsinline=1&rel=0';if(e.k=='sp')return 'https://open.spotify.com/embed/'+e.t+'/'+e.id;if(e.k=='sc')return 'https://w.soundcloud.com/player/?auto_play=true&url='+encodeURIComponent(e.u);return 'https://widget.deezer.com/widget/dark/track/'+e.id}
+let DK=null;
+function play(id){const s=S.songs.find(x=>x.id==id);if(!s)return;const e=s.link&&emb(s.link);if(!e){if(s.link)window.open(s.link,'_blank');return}DK={id:s.id,min:false,e};dock()}
+function dock(){let d=document.getElementById('dock');if(!DK){if(d)d.remove();document.body.classList.remove('dk','mn');return}
+ if(!d){d=document.createElement('div');d.id='dock';document.body.append(d)}
+ const s=S.songs.find(x=>x.id==DK.id)||{title:'',link:''};d.className='';document.body.classList.remove('mn');
+ d.innerHTML=`<div class='dh'><b class='es'>🎧 ${esc(s.title)}</b><span class='row' style='flex-wrap:nowrap'><a class='ib' href='${esc(s.link)}' target='_blank' rel='noopener'>↗</a><button class='ib' id='dmin' onclick='dockc()'>▼</button><button class='ib' onclick='DK=null;dock()'>✕</button></span></div>${location.hostname.includes('claude')?`<div class='mu' style='padding:14px 4px'>Le lecteur intégré est bloqué dans l’aperçu Claude. Il fonctionne sur ton site Vercel. Utilise ↗ pour ouvrir le lien.</div>`:`<iframe src='${esrc(DK.e)}' allow='autoplay; encrypted-media; picture-in-picture; fullscreen' allowfullscreen></iframe><div class='mu' style='font-size:12px;margin-top:4px'>Lecteur bloqué ? Appuie sur ↗ pour ouvrir le lien.</div>`}`;
+ document.body.classList.add('dk')}
+function dockc(){DK.min=!DK.min;document.getElementById('dock').classList.toggle('min',DK.min);document.body.classList.toggle('mn',DK.min);document.getElementById('dmin').textContent=DK.min?'▲':'▼'}
+function strip(t){let o='',d=0;for(const c of t){if('([{'.includes(c))d++;else if(')]}'.includes(c))d=Math.max(0,d-1);else if(!d)o+=c}return o.replace(/ +/g,' ').trim()}
+async function meta(u){const j=async x=>{const r=await fetch(x);if(!r.ok)throw 0;return r.json()};let d=null;
+ for(const x of ['https://noembed.com/embed?url=','https://www.youtube.com/oembed?format=json&url=','https://open.spotify.com/oembed?url=']){try{d=await j(x+encodeURIComponent(u));if(d&&d.title)break}catch(e){d=null}}
+ if(!d||!d.title)return null;let t=strip(d.title).replace(/ [–—] /g,' - '),a=strip(d.author_name||'').replace(/vevo|- topic/ig,'').trim();
+ const m=t.split(' - ');if(m.length>1){a=m[0].trim();t=m.slice(1).join(' - ').trim()}return{t:cap(t),a:cap(a)}}
+async function lyr(a,t){const g=gen.includes(a)?'':a,j=async u=>{const r=await fetch(u);if(!r.ok)throw 0;return r.json()},cl=x=>x.split('\n').map(l=>l.trim()).filter(l=>l&&!(l[0]=='['&&l.endsWith(']'))).slice(0,220);
+ try{const R=await j('https://lrclib.net/api/search?q='+encodeURIComponent((g+' '+t).trim())),h=R.find(x=>x.plainLyrics);if(h)return{l:cl(h.plainLyrics),t:h.trackName,a:h.artistName}}catch(e){}
+ if(g){try{const r=await j('https://api.lyrics.ovh/v1/'+encodeURIComponent(g)+'/'+encodeURIComponent(t));if(r.lyrics)return{l:cl(r.lyrics),t:t,a:g}}catch(e){}}
+ return null}
+async function enrich(id){const s=S.songs.find(x=>x.id==id);if(!s)return;s.st='search';sv();draw(true);
+ try{if(s.link&&!s.meta){const m=await meta(s.link);s.meta=1;if(m){if(m.t)s.title=m.t;if(m.a)s.artist=m.a}}
+  if(/^Chanson /.test(s.title)&&gen.includes(s.artist))throw 0;
+  const R=await lyr(s.artist,s.title);
+  if(R&&R.l.length){s.lines=R.l.map(es=>({es,fr:''}));s.auto=1;s.st='ok';s.rate={};s.my={};if(gen.includes(s.artist)&&R.a)s.artist=R.a;if(/^Chanson /.test(s.title)&&R.t)s.title=R.t}else s.st='fail'}
+ catch(e){s.st='fail'}
+ sv();draw(true)}
+const _addl=addl;
+addl=function(){const n=S.songs.length,L=document.getElementById('nl').value.split('\n').map(x=>x.trim()).filter(Boolean);if(!L.length)return;
+ if(L.length==1&&!/^https?:/i.test(L[0])&&L[0].length<90){const m=L[0].split(' - '),s=mk({p:'Recherche',t:m.length>1?m.slice(1).join(' - '):m[0],a:m.length>1?m[0]:'',u:''},[]);S.songs.push(s);cur=s.id;tick();go('songs');enrich(s.id);return}
+ _addl();S.songs.slice(n).filter(s=>!s.lines.length).forEach(s=>enrich(s.id))};
+bar=function(s){const q=encodeURIComponent(s.title+' '+s.artist+' letra'),e=s.link&&emb(s.link);return `<div class='chips'>${e?`<a href='#' data-i='${s.id}' onclick='play(this.dataset.i);return false'>▶ Écouter ici</a>`:''}${s.link?`<a href='${esc(s.link)}' target='_blank' rel='noopener'>↗ Ouvrir</a>`:''}${!s.lines.length?`<a href='#' data-i='${s.id}' onclick='enrich(this.dataset.i);return false'>🔎 Chercher les paroles</a>`:''}<a href='https://genius.com/search?q=${q}' target='_blank' rel='noopener'>📜 Genius</a><a href='https://www.google.com/search?q=${q}' target='_blank' rel='noopener'>🔎 Google</a>${s.auto&&s.lines.length?`<div class='mu' style='width:100%'>Paroles trouvées automatiquement : vérifie qu’elles correspondent bien à la chanson (✏️ pour corriger).</div>`:''}</div>`};
+const _pb=pasteBox;pasteBox=function(s){return (s.st=='search'?`<div class='card'>🔎 Recherche automatique des paroles…</div>`:s.st=='fail'?`<div class='card'>😕 Paroles introuvables automatiquement. Colle-les ci-dessous, ou corrige le titre et l’artiste puis relance la recherche.</div>`:'')+_pb(s)};
+const _vs2=vSongs;vSongs=function(){return _vs2().replace('Colle un lien ou des paroles…','Lien, « Artiste - Titre » ou paroles…')};
+const _d5=draw;draw=function(k){_d5(k);try{if(tab=='songs')document.querySelectorAll('#v .song').forEach((c,i)=>{const s=S.songs[i];if(!s)return;const ic=c.querySelector('.ic'),a=c.querySelector('a.ib');
+ if(a&&emb(s.link)){const b=document.createElement('button');b.className='ib';b.textContent='▶';b.onclick=()=>play(s.id);a.replaceWith(b)}
+ if(!s.lines.length&&s.st!='search'){const r=document.createElement('button');r.className='ib';r.textContent='🔎';r.onclick=()=>enrich(s.id);ic.prepend(r)}
+ const tg=c.querySelector('.tag');if(tg&&s.st=='search')tg.textContent='🔎 recherche…'})}catch(e){}};
+LOG.unshift(['1.10',['Traduction automatique de référence : bouton « Voir la traduction » et préparation de toute la chanson (approximative)']]);
+async function mt(x){try{const r=await fetch('https://api.mymemory.translated.net/get?langpair='+encodeURIComponent('es|fr')+'&q='+encodeURIComponent(x));const j=await r.json(),t=j&&j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY WARNING|INVALID/i.test(t)){const e=document.createElement('textarea');e.innerHTML=t;return e.value}}catch(e){}return null}
+async function rv(i){const s=song(),l=s.lines[i],d=document.getElementById('r'+i);if(!d)return;
+ if(l.fr){d.innerHTML=`<div class='ref'>${esc(l.fr)}${l.mt?` <span class='mu'>(traduction automatique, approximative)</span>`:''}</div>`;return}
+ d.innerHTML=`<div class='ref mu'>Traduction en cours…</div>`;
+ const t=await mt(l.es);
+ if(t){l.fr=t;l.mt=1;sv();rv(i)}else d.innerHTML=`<div class='ref'><span class='mu'>Traduction automatique indisponible pour l’instant. Compare avec : </span>${dict(l.es)}</div>`}
+async function allmt(b){const s=song();for(let i=0;i<s.lines.length;i++){const l=s.lines[i];if(l.fr)continue;b.textContent='🌐 '+(i+1)+' / '+s.lines.length+'…';const t=await mt(l.es);if(!t){sv();b.textContent='🌐 Service indisponible ou limite atteinte, réessaie plus tard';return}l.fr=t;l.mt=1;await new Promise(r=>setTimeout(r,250))}sv();b.textContent='✅ Traductions prêtes (visibles avec « Voir la traduction »)'}
+const _b2=bar;bar=function(s){const h=_b2(s);if(!s.lines.length||s.lines.every(l=>l.fr))return h;return h.slice(0,-6)+`<a href='#' onclick='allmt(this);return false'>🌐 Préparer les traductions</a></div>`};
+try{localStorage.setItem('lang','es')}catch(e){}
+ld();if(!S.level&&!S.skip)tab='niv';draw();
+</script>
+</body>
+</html>
