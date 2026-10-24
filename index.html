@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cancionero – Apprendre l’espagnol en chansons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf6ee;--sf:#fff;--tx:#2a2118;--mu:#7a6c5d;--ac:#c8452b;--ac2:#f2b134;--ok:#2f8f5b;--bd:#e6dccb;--bad:#c0392b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1713;--sf:#27201a;--tx:#f3eadd;--mu:#a89a88;--ac:#ef6a4d;--ac2:#f2b134;--ok:#4cc07f;--bd:#3a3128;--bad:#ef6a5d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1713;--sf:#27201a;--tx:#f3eadd;--mu:#a89a88;--ac:#ef6a4d;--ac2:#f2b134;--ok:#4cc07f;--bd:#3a3128;--bad:#ef6a5d;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+h1{font:700 26px Georgia,"Times New Roman",serif;margin:0;color:var(--ac)}
+.stats{font-size:13px;color:var(--mu)}
+nav{display:flex;gap:6px;overflow-x:auto;margin:14px 0;padding-bottom:4px}
+nav button{white-space:nowrap;border:1px solid var(--bd);background:var(--sf);color:var(--tx);padding:8px 14px;border-radius:99px;cursor:pointer;font-size:14px}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+input,textarea,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:9px;margin:4px 0}
+textarea{min-height:90px;resize:vertical}
+button.b{border:0;background:var(--ac);color:#fff;padding:9px 14px;border-radius:10px;cursor:pointer;font:inherit;font-size:14px}
+button.g{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+button.sm{padding:5px 10px;font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mu{color:var(--mu);font-size:13px}
+.es{font:20px/1.6 Georgia,serif}
+.w{cursor:pointer;border-radius:4px;padding:0 1px}.w:hover{background:var(--ac2);color:#2a2118}
+.ref{margin-top:6px;padding:8px;border-left:3px solid var(--ac2);background:var(--bg);border-radius:6px}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--ok)}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--ac2);color:#2a2118}
+.pop{position:sticky;bottom:8px;border:2px solid var(--ac);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.cl input{display:inline-block;width:auto;min-width:70px;max-width:130px;padding:2px 6px;margin:0 2px;font:18px Georgia,serif}
+.cl input.ok{border-color:var(--ok);color:var(--ok)}.cl input.ko{border-color:var(--bad);color:var(--bad)}
+.big{font:30px Georgia,serif;text-align:center;padding:26px 8px}
+a{color:var(--ac)}
+:root{--bg:#fff6e8;--sf:#fffdf8;--tx:#2b1d16;--mu:#8a7566;--ac:#d9482b;--ac2:#f4a82b;--ok:#2f9468;--bd:#f0e0c8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17110e;--sf:#241b16;--tx:#f6ecdf;--mu:#ad9d8b;--ac:#f0694a;--bd:#3a2e25}}
+:root[data-theme="dark"]{--bg:#17110e;--sf:#241b16;--tx:#f6ecdf;--mu:#ad9d8b;--ac:#f0694a;--bd:#3a2e25}
+body{font-family:'DM Sans',system-ui,sans-serif;background:radial-gradient(900px 400px at 85% -5%,rgba(244,168,43,.28),transparent),radial-gradient(700px 400px at -10% 10%,rgba(217,72,43,.18),transparent),var(--bg);background-attachment:fixed}
+header{background:linear-gradient(135deg,#d9482b,#f4a82b);color:#fff;border-radius:24px;padding:22px;box-shadow:0 12px 30px -10px rgba(217,72,43,.5);position:relative;overflow:hidden}
+header:after{content:'♪ ♫ ♬';position:absolute;right:16px;top:-8px;font-size:64px;opacity:.15;letter-spacing:6px}
+h1,.ttl{font-family:Fraunces,Georgia,serif;font-weight:800;letter-spacing:-.5px}
+h1{color:#fff;font-size:30px}
+.stats{color:#fff;background:rgba(255,255,255,.22);padding:6px 12px;border-radius:99px;backdrop-filter:blur(6px);font-weight:500}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(10px);padding:10px 0;margin:8px 0}
+nav button{border-radius:14px;font-weight:500;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+nav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));border:0;box-shadow:0 6px 14px -4px rgba(217,72,43,.5)}
+.card{border-radius:20px;border:1px solid var(--bd);box-shadow:0 8px 24px -14px rgba(90,50,20,.35);transition:transform .2s}
+.card:hover{transform:translateY(-1px)}
+button.b{background:linear-gradient(135deg,var(--ac),#e8702a);border-radius:12px;font-weight:500;box-shadow:0 4px 10px -3px rgba(217,72,43,.5)}
+button.b.g{background:transparent;box-shadow:none;color:var(--tx)}
+.es{font-family:Fraunces,Georgia,serif;font-weight:600}
+.w:hover{background:var(--ac2)}
+input,textarea,select{border-radius:12px;background:var(--bg)}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--ac2);border-color:transparent}
+.ttl{font-size:20px}.add{border:2px dashed var(--ac2);background:color-mix(in srgb,var(--ac2) 8%,var(--sf))}
+.cov{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:24px;flex:none;box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
+.sg{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.sg>div:first-child{display:flex;gap:14px;align-items:center;min-width:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.chips a{text-decoration:none;font-size:13px;padding:5px 11px;border-radius:99px;background:var(--bg);border:1px solid var(--bd);color:var(--tx)}
+.chips a:hover{border-color:var(--ac)}
+:root:root:root{--bg:#0e0a1f;--sf:#181230;--tx:#f2ecff;--mu:#a79bc9;--ac:#ff5c9d;--ac2:#ffc857;--ok:#35e0b0;--bd:#2d2552;--bad:#ff6b7a;color-scheme:dark}
+body{background:radial-gradient(800px 420px at 90% -8%,rgba(124,58,237,.45),transparent),radial-gradient(700px 420px at -10% 8%,rgba(255,92,157,.28),transparent),radial-gradient(600px 500px at 50% 110%,rgba(46,230,197,.15),transparent),var(--bg);background-attachment:fixed}
+header{background:linear-gradient(135deg,#6d28d9,#db2777 60%,#f59e0b);box-shadow:0 14px 40px -12px rgba(219,39,119,.6)}
+nav{background:color-mix(in srgb,var(--bg) 75%,transparent)}
+nav button{background:var(--sf);border-color:var(--bd);color:var(--tx)}
+nav button.on{background:linear-gradient(135deg,#8b5cf6,#ff5c9d);box-shadow:0 6px 18px -4px rgba(255,92,157,.6)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent),var(--sf);box-shadow:0 10px 30px -16px #000}
+button.b{background:linear-gradient(135deg,#8b5cf6,#ff5c9d);box-shadow:0 6px 16px -6px rgba(255,92,157,.7)}
+.add{border-color:#8b5cf6;background:color-mix(in srgb,#8b5cf6 12%,var(--sf))}
+.es{color:#fff}.w:hover,.tag{color:#1a1230}
+.ref{background:rgba(139,92,246,.14);border-left-color:var(--ac)}
+.bar i{background:linear-gradient(90deg,#35e0b0,#8b5cf6)}
+::placeholder{color:#7d72a3}a{color:#7de3ff}.chips a{color:var(--tx)}
+.ph{font-style:italic;color:#7de3ff;margin-top:6px;font-size:15px}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes flt{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+@keyframes wv{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes drift{0%{transform:translateY(105vh) rotate(0);opacity:0}10%{opacity:.35}90%{opacity:.25}100%{transform:translateY(-12vh) rotate(40deg);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@keyframes grow{from{width:0}}@keyframes out{to{opacity:0;visibility:hidden}}
+header{background-size:220% 220%;animation:flow 10s ease infinite}
+header>*{position:relative;z-index:1}
+.brand{display:flex;gap:14px;align-items:center}.brand small{display:block;opacity:.92;font-size:13px}
+.logo{width:60px;height:60px;flex:none;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4));animation:flt 3.5s ease-in-out infinite}
+.wv1{animation:wv 1.6s infinite}.wv2{animation:wv 1.6s .4s infinite}
+.wrap{position:relative;z-index:1}
+.notes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.notes span{position:absolute;bottom:0;color:var(--ac);opacity:0;animation:drift linear infinite}
+.card{animation:up .5s backwards}
+#v>*:nth-child(2){animation-delay:.06s}#v>*:nth-child(3){animation-delay:.12s}#v>*:nth-child(4){animation-delay:.18s}#v>*:nth-child(5){animation-delay:.24s}#v>*:nth-child(n+6){animation-delay:.3s}
+nav button{transition:transform .2s,box-shadow .2s}nav button:hover{transform:translateY(-2px)}nav button.on{animation:pop .35s}
+button.b{transition:transform .15s,filter .15s}button.b:hover{transform:translateY(-2px);filter:brightness(1.12)}button:active{transform:scale(.95)}
+.w{display:inline-block;transition:transform .15s,background .15s}.w:hover{transform:translateY(-2px) scale(1.08)}
+.cov{transition:transform .3s}.card:hover .cov{transform:rotate(-7deg) scale(1.1)}
+.bar i{animation:grow .9s cubic-bezier(.2,.8,.2,1) backwards}
+.big{animation:pop .4s}.pop{animation:up .3s}
+.splash{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);animation:out .6s 1.4s forwards}
+.splash .logo{width:120px;height:120px;animation:pop .8s,flt 3s .8s infinite}.splash b{font:800 36px Fraunces,Georgia,serif;background:linear-gradient(90deg,#ffc857,#ff5c9d);-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .8s .3s backwards}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand"><svg class="logo" viewBox="0 0 64 64" aria-label="Logo Cancionero"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc857"/><stop offset="1" stop-color="#ff5c9d"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="19" fill="#150f2b" stroke="url(#lg)" stroke-width="2.5"/><path d="M24 44V22l17-4v22" fill="none" stroke="url(#lg)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="45" r="5.5" fill="url(#lg)"/><circle cx="37" cy="41" r="5.5" fill="url(#lg)"/><path class="wv1" d="M48 25q4 5 0 10" fill="none" stroke="#7de3ff" stroke-width="2.5" stroke-linecap="round"/><path class="wv2" d="M53 21q8 9 0 18" fill="none" stroke="#7de3ff" stroke-width="2.5" stroke-linecap="round"/></svg><div><h1>Cancionero</h1><small>Apprends l’espagnol en chantant</small></div></div><div class="stats" id="st"></div></header>
+<nav id="nav"></nav>
+<main id="v"></main>
+</div>
+<script>
+const TABS=[['songs','Chansons'],['tr','Traduire'],['cl','Trous'],['voc','Vocabulaire'],['rev','Réviser']];
+let tab='songs',S={songs:[],vocab:[],streak:0,last:'',ex:0},cur=null,pop=null,card=null,show=false,clz=null;
+const mem={};
+function ld(){try{const r=localStorage.getItem('cancionero');if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+ if(!S.songs.length)S.songs.push({id:1,title:'Exemple original : Después de la chamba',artist:'Texte de démo (Mexique)',link:'',lines:[
+ ['¿Qué onda, wey? Hoy ando bien cansado,','Quoi de neuf, mec ? Aujourd’hui je suis vraiment crevé,'],
+ ['me quedé en la chamba hasta las ocho.','je suis resté au boulot jusqu’à huit heures.'],
+ ['No te preocupes, todo está chido,','Ne t’inquiète pas, tout est cool,'],
+ ['mañana nos vemos y echamos un taco.','demain on se voit et on mange un taco.']].map(l=>({es:l[0],fr:l[1]})),rate:{},my:{}})}
+function sv(){try{localStorage.setItem('cancionero',JSON.stringify(S))}catch(e){}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zñ]/g,'');
+const today=()=>new Date().toISOString().slice(0,10);
+function tick(){const t=today();if(S.last!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);S.streak=S.last===y?S.streak+1:1;S.last=t}S.ex++;sv()}
+function head(){document.getElementById('st').textContent='🔥 '+S.streak+' j · '+S.vocab.length+' mots · '+S.ex+' exercices';
+ document.getElementById('nav').innerHTML=TABS.map(t=>`<button class="${t[0]==tab?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join('')}
+function go(t){tab=t;pop=null;card=null;show=false;draw()}
+function song(){return S.songs.find(s=>s.id==cur)||S.songs[0]}
+function picker(){return `<select onchange="cur=this.value;clz=null;draw()">${S.songs.map(s=>`<option value="${s.id}" ${s.id==song().id?'selected':''}>${esc(s.title)}</option>`).join('')}</select>`}
+function words(l){return l.split(/([\p{L}’'-]+)/u).map((p,i)=>i%2?`<span class="w" onclick="wp(this.textContent)">${esc(p)}</span>`:esc(p)).join('')}
+function wp(w,c){pop={w:w.replace(/^[-’']+|[-’']+$/g,'').toLowerCase()};draw(true)}
+function dict(w){const q=encodeURIComponent(w);return `<a href="https://www.wordreference.com/esfr/${q}" target="_blank" rel="noopener">WordReference</a> · <a href="https://www.linguee.fr/francais-espagnol/search?query=${q}" target="_blank" rel="noopener">Linguee</a> · <a href="https://www.google.com/search?q=${q}+significado+jerga" target="_blank" rel="noopener">argot ?</a>`}
+function popup(){if(!pop)return'';return `<div class="card pop"><b class="es">${esc(pop.w)}</b><div class="mu">${dict(pop.w)}</div>
+<input id="pm" placeholder="Sens en français"><div class="row"><select id="pt" style="width:auto"><option value="mot">Mot</option><option value="expression">Expression</option><option value="argot">Argot / familier</option></select>
+<button class="b" onclick="addv()">Ajouter</button><button class="b g" onclick="pop=null;draw(true)">Fermer</button></div></div>`}
+function addv(){const m=document.getElementById('pm').value.trim();if(!m)return;
+ S.vocab.push({id:Date.now(),w:pop.w,tr:m,t:document.getElementById('pt').value,src:song().title,box:0,due:today()});pop=null;tick();draw(true)}
+function draw(keep){head();const y=window.scrollY;document.getElementById('v').innerHTML=({songs:vSongs,tr:vTr,cl:vCl,voc:vVoc,rev:vRev})[tab]();if(keep)window.scrollTo(0,y)}
+function vSongs(){return S.songs.map(s=>`<div class="card"><div class="row" style="justify-content:space-between"><div><b>${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length} lignes</div></div>
+<div class="row"><button class="b sm" onclick="cur=${s.id};go('tr')">Traduire</button>${s.link?`<a href="${esc(s.link)}" target="_blank" rel="noopener">▶ Écouter</a>`:''}<button class="b g sm" onclick="dels(${s.id})">✕</button></div></div></div>`).join('')+
+`<div class="card"><b>Ajouter une chanson</b><p class="mu">Colle les paroles de ta chanson préférée (récupérées sur un site de paroles légal). Astuce : choisis des styles natifs : reggaetón, cumbia, rap, corridos, rock latino…</p>
+<input id="n1" placeholder="Titre"><input id="n2" placeholder="Artiste"><input id="n3" placeholder="Lien pour écouter (YouTube, Spotify…) – optionnel">
+<textarea id="n4" placeholder="Paroles en espagnol (une ligne par vers)"></textarea>
+<textarea id="n5" placeholder="Traduction de référence (optionnel, même nombre de lignes) pour t’auto-corriger"></textarea>
+<button class="b" onclick="adds()">Enregistrer</button></div>`}
+function adds(){const g=i=>document.getElementById('n'+i).value;const es=g(4).split('\n').map(x=>x.trim()).filter(Boolean),fr=g(5).split('\n').map(x=>x.trim()).filter(Boolean);
+ if(!g(1).trim()||!es.length){alert('Il faut au moins un titre et des paroles.');return}
+ const s={id:Date.now(),title:g(1).trim(),artist:g(2).trim()||'—',link:g(3).trim(),lines:es.map((e,i)=>({es:e,fr:fr.length==es.length?fr[i]:''})),rate:{},my:{}};
+ S.songs.push(s);cur=s.id;tick();go('tr')}
+function dels(id){if(confirm('Supprimer cette chanson ?')){S.songs=S.songs.filter(s=>s.id!=id);if(!S.songs.length)ld();sv();draw()}}
+function vTr(){const s=song(),n=Object.keys(s.rate).length;
+ return picker()+`<p class="mu">Clique sur un mot pour le noter dans ton vocabulaire. Traduis chaque vers à ta façon, puis compare.</p><div class="bar"><i style="width:${n/s.lines.length*100}%"></i></div>`+
+ s.lines.map((l,i)=>`<div class="card"><div class="es">${words(l.es)}</div>
+ <textarea style="min-height:48px" placeholder="Ta traduction…" oninput="song().my[${i}]=this.value;sv()">${esc(s.my[i]||'')}</textarea>
+ <div class="row"><button class="b g sm" onclick="rv(${i})">Voir la traduction</button><span class="mu">Auto-évaluation :</span>
+ ${[['✓','ok'],['~','mid'],['✗','ko']].map(r=>`<button class="b sm ${s.rate[i]==r[1]?'':'g'}" onclick="rt(${i},'${r[1]}')">${r[0]}</button>`).join('')}</div>
+ <div id="r${i}"></div></div>`).join('')+popup()}
+function rv(i){const l=song().lines[i];document.getElementById('r'+i).innerHTML=`<div class="ref">${l.fr?esc(l.fr):'<span class="mu">Pas de traduction de référence. Compare avec : '+dict(l.es)+'</span>'}</div>`}
+function rt(i,r){song().rate[i]=r;tick();draw(true)}
+function vCl(){const s=song();
+ if(!clz)clz={lv:30,res:false};
+ const html=s.lines.map((l,i)=>`<div class="card cl es">${l.es.split(/([\p{L}’'-]+)/u).map((p,k)=>{if(k%2&&p.length>3&&clz.mask(i,k)){return `<input data-a="${esc(p)}" size="${p.length}" autocapitalize="off" autocomplete="off">`}return esc(p)}).join('')}</div>`).join('');
+ return picker()+`<div class="card"><div class="row"><span>Difficulté : <b id="lv">${clz.lv}</b> % de mots cachés</span><input type="range" min="10" max="80" value="${clz.lv}" style="width:140px" onchange="clz.lv=+this.value;clz.seed=null;draw()"><button class="b g sm" onclick="clz.seed=null;draw()">Nouveau tirage</button></div>
+ <p class="mu">Écoute la chanson, puis retrouve les mots manquants (accents facultatifs).</p></div>`+html+`<div class="row"><button class="b" onclick="chk()">Vérifier</button><span id="sc" class="mu"></span></div>`}
+function chk(){let ok=0,t=0;document.querySelectorAll('.cl input').forEach(i=>{t++;const g=norm(i.value)==norm(i.dataset.a);i.className=g?'ok':'ko';if(g)ok++;else i.title=i.dataset.a});document.getElementById('sc').textContent=ok+' / '+t+' (les erreurs montrent la réponse au survol)';tick();head()}
+function vVoc(){return `<p class="mu">${S.vocab.length} entrée(s). Clique sur un mot dans « Traduire » pour en ajouter.</p>`+S.vocab.map(v=>`<div class="card row" style="justify-content:space-between"><div><b>${esc(v.w)}</b> <span class="tag">${v.t}</span><div>${esc(v.tr)}</div><div class="mu">${esc(v.src)}</div></div><button class="b g sm" onclick="delv(${v.id})">✕</button></div>`).join('')}
+function delv(id){S.vocab=S.vocab.filter(v=>v.id!=id);sv();draw()}
+function vRev(){const d=S.vocab.filter(v=>v.due<=today());
+ if(!S.vocab.length)return '<div class="card">Ajoute d’abord des mots depuis une chanson.</div>';
+ if(!d.length)return '<div class="card big">🎉 Rien à réviser aujourd’hui !</div>';
+ card=card||d[0];const v=card;
+ return `<p class="mu">${d.length} carte(s) à réviser · boîte ${v.box+1}/5</p><div class="card"><div class="big">${esc(v.w)}</div>`+
+ (show?`<div class="big" style="color:var(--ac);padding-top:0">${esc(v.tr)}</div><div class="mu" style="text-align:center">${esc(v.src)}</div><div class="row" style="justify-content:center;margin-top:12px"><button class="b" onclick="ans(1)">Je savais ✓</button><button class="b g" onclick="ans(0)">À revoir ✗</button></div>`:`<div class="row" style="justify-content:center"><button class="b" onclick="show=true;draw()">Afficher la réponse</button></div>`)+'</div>'}
+function ans(k){const v=S.vocab.find(x=>x.id==card.id),I=[0,1,3,7,16];v.box=k?Math.min(4,v.box+1):0;v.due=new Date(Date.now()+I[v.box]*864e5).toISOString().slice(0,10);card=null;show=false;tick();draw()}
+const _vc=vCl;
+vCl=function(){if(!clz||!clz.seed){clz=clz||{lv:30};clz.seed=Math.random()*1e9|0;const m={};clz.mask=(i,k)=>{const key=i+'_'+k;if(!(key in m)){let x=Math.sin(clz.seed+i*131+k*17)*1e4;m[key]=(x-Math.floor(x))*100<clz.lv}return m[key]}}return _vc()};
+let _n=0,pend=null;
+const cap=s=>s.replace(/\b\w/g,c=>c.toUpperCase());
+function guess(u){let p='Lien',t='',a='';try{const x=new URL(u),h=x.hostname.replace('www.',''),q=x.pathname.split('/').filter(Boolean),dn=z=>decodeURIComponent(z||'').replace(/-/g,' ');
+ if(/youtu/.test(h))p='YouTube';else if(/spotify/.test(h))p='Spotify';else if(/deezer/.test(h))p='Deezer';else if(/apple/.test(h))p='Apple Music';else if(/soundcloud/.test(h)){p='SoundCloud';a=dn(q[0]);t=dn(q[1])}
+ else if(/genius/.test(h)){p='Genius';t=dn(q[0]).replace(/ lyrics$/i,'')}else if(/musixmatch/.test(h)){p='Musixmatch';t=dn(q[q.length-1]);a=dn(q[q.length-2])}}catch(e){}
+ return{p,t,a,u}}
+function mk(g,lines){g=g||{p:'Texte',t:'',a:'',u:''};return{id:Date.now()*10+(_n++%10),title:cap(g.t)||('Chanson '+g.p),artist:cap(g.a)||g.p,link:g.u,lines:lines.map(es=>({es,fr:''})),rate:{},my:{}}}
+function addl(){const L=document.getElementById('nl').value.split('\n').map(x=>x.trim()).filter(Boolean);if(!L.length)return;
+ const U=L.filter(x=>/^https?:\/\//i.test(x)),T=L.filter(x=>!/^https?:\/\//i.test(x));
+ const m=U.length?U.map(u=>mk(guess(u),U.length==1?T:[])):[mk(null,T)];
+ S.songs.push(...m);cur=m[m.length-1].id;tick();go(m.length==1?'tr':'songs')}
+function bar(s){const q=encodeURIComponent(s.title+' '+s.artist+' letra');return `<div class="chips">${s.link?`<a href="${esc(s.link)}" target="_blank" rel="noopener">▶ Écouter</a>`:''}<a href="https://genius.com/search?q=${q}" target="_blank" rel="noopener">📜 Paroles (Genius)</a><a href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener">🔎 Google</a></div>`}
+function pasteBox(s){return `<div class="card add"><b class="ttl">${s.lines.length?'Modifier la chanson':'Dernière étape : les paroles'}</b><p class="mu">Ouvre une page de paroles avec les liens ci-dessous, copie-les puis colle-les ici.</p>${bar(s)}
+<input id="pt2" value="${esc(s.title)}" placeholder="Titre"><input id="pa" value="${esc(s.artist)}" placeholder="Artiste">
+<textarea id="pl" placeholder="Paroles en espagnol (une ligne par vers)">${esc(s.lines.map(l=>l.es).join('\n'))}</textarea>
+<textarea id="pf" placeholder="Traduction de référence (optionnel, même nombre de lignes)">${esc(s.lines.map(l=>l.fr).filter(Boolean).join('\n'))}</textarea>
+<button class="b" onclick="savel()">Enregistrer</button></div>`}
+function savel(){const s=song(),g=i=>document.getElementById(i).value,K=i=>g(i).split('\n').map(x=>x.trim()).filter(Boolean),es=K('pl'),fr=K('pf');
+ s.title=g('pt2').trim()||s.title;s.artist=g('pa').trim()||s.artist;if(es.length)s.lines=es.map((e,i)=>({es:e,fr:fr.length==es.length?fr[i]:''}));s.edit=false;tick();draw()}
+vSongs=function(){return `<div class="card add"><b class="ttl">✨ Ajouter des chansons</b><p class="mu">Colle un ou plusieurs liens, un par ligne (YouTube, Spotify, Genius, Musixmatch…). L’appli reconnaît la plateforme et devine le titre quand c’est possible. Tu peux aussi coller directement des paroles.</p>
+<textarea id="nl" placeholder="https://…"></textarea><button class="b" onclick="addl()">Ajouter</button></div>`+
+ S.songs.map(s=>{const h=[...s.title].reduce((a,c)=>a+c.charCodeAt(0),0)%360;return `<div class="card sg"><div><div class="cov" style="background:linear-gradient(135deg,hsl(${h},70%,52%),hsl(${(h+45)%360},80%,60%))">♪</div><div style="min-width:0"><b class="es">${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length?s.lines.length+' lignes':'<span class="tag">paroles à ajouter</span>'}</div></div></div>
+<div class="row"><button class="b sm" onclick="cur=${s.id};go('tr')">${s.lines.length?'Traduire':'Ajouter les paroles'}</button>${s.link?`<a href="${esc(s.link)}" target="_blank" rel="noopener">▶</a>`:''}<button class="b g sm" onclick="cur=${s.id};song().edit=true;go('tr')">✏️</button><button class="b g sm" onclick="dels(${s.id})">${pend==s.id?'Sûr ?':'✕'}</button></div></div>`}).join('')};
+dels=function(id){if(pend==id){S.songs=S.songs.filter(s=>s.id!=id);pend=null;if(!S.songs.length)ld();sv()}else pend=id;draw()};
+const _t=vTr,_c=vCl;
+vTr=function(){const s=song();if(!s.lines.length||s.edit)return picker()+pasteBox(s);const h=_t(),p=picker();return p+bar(s)+h.slice(p.length)};
+vCl=function(){const s=song();if(!s.lines.length)return picker()+pasteBox(s);return _c()};
+pasteBox=function(s){return `<div class="card add"><b class="ttl">${s.lines.length?'Modifier les paroles':'Colle les paroles'}</b><p class="mu">Ouvre les paroles avec un bouton, copie-les, colle-les ici. C’est tout.</p>${bar(s)}
+<textarea id="pl" style="min-height:150px" placeholder="Paroles en espagnol (une ligne par vers)">${esc(s.lines.map(l=>l.es).join('\n'))}</textarea>
+<button class="b" onclick="savel()">Enregistrer</button>
+<details style="margin-top:12px"><summary class="mu">Titre et artiste (facultatif)</summary><input id="pt2" value="${esc(s.title)}" placeholder="Titre"><input id="pa" value="${esc(s.artist)}" placeholder="Artiste"></details></div>`};
+savel=function(){const s=song(),g=i=>document.getElementById(i).value,es=g('pl').split('\n').map(x=>x.trim()).filter(Boolean),old=s.lines;
+ s.title=g('pt2').trim()||s.title;s.artist=g('pa').trim()||s.artist;if(es.length)s.lines=es.map((e,i)=>({es:e,fr:(old[i]&&old[i].es==e)?old[i].fr:''}));s.edit=false;tick();draw()};
+let SM=null;
+(async()=>{try{SM=window.claude?await window.claude.use('sample'):null}catch(e){}if(SM)draw(true)})();
+async function fb(i,btn){const s=song(),l=s.lines[i];btn.disabled=true;btn.textContent='Claude réfléchit…';s.fb=s.fb||{};
+ try{const r=await SM('Tu es un prof d\u2019espagnol natif qui aide un francophone à apprendre avec des chansons. Vers : « '+l.es+' ». Sa traduction : « '+(s.my[i]||'(aucune)')+' ». Réponds en français, 5 phrases maximum : ce qui est juste ou faux dans sa traduction, le sens naturel du vers, et surtout l\u2019argot, les expressions et le registre (avec le pays d\u2019origine si pertinent).',{modelTier:'quick'});s.fb[i]=r.text;sv()}
+ catch(e){s.fb[i]='Indisponible pour le moment ('+(e.code||'erreur')+').'}draw(true)}
+const _d=draw;draw=function(k){_d(k);if(tab=='tr'&&SM){const s=song();document.querySelectorAll('#v [id^="r"]').forEach(d=>{if(!/^r\d+$/.test(d.id))return;const i=+d.id.slice(1);
+ const b=document.createElement('button');b.className='b sm';b.style.marginTop='8px';b.textContent='🤖 Corriger et expliquer avec Claude';b.onclick=()=>fb(i,b);d.before(b);
+ if(s.fb&&s.fb[i]){const f=document.createElement('div');f.className='ref';f.innerHTML=esc(s.fb[i]).replace(/\n/g,'<br>');d.before(f)}})}};
+const AC=[['es-ES','Espagne'],['es-MX','Mexique'],['es-AR','Argentine'],['es-US','Latino USA']];
+function say(t){try{const u=new SpeechSynthesisUtterance(t),L=S.acc||'es-ES',V=speechSynthesis.getVoices();u.lang=L;u.rate=S.slow?0.55:0.95;u.voice=V.find(v=>v.lang.replace('_','-')==L)||V.find(v=>v.lang.startsWith('es'))||null;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function ph(w){let s=w.toLowerCase().replace(/[’']/g,'');const th=(S.acc||'es-ES')=='es-ES'?'¢':'s';
+ [[/qu(?=[eéií])/g,'k'],[/gu(?=[eéií])/g,'g'],[/gü/g,'gou'],[/ch/g,'§'],[/ll/g,'y'],[/ñ/g,'gn'],[/g(?=[eéií])/g,'¤'],[/j/g,'¤'],[/c(?=[eéií])/g,th],[/[zç]/g,th],[/c/g,'k'],[/h/g,''],[/[vw]/g,'b'],[/x/g,'ks'],[/u/g,'ou'],[/y(?![aeiouáéíóú])/g,'i'],[/á/g,'A'],[/é/g,'É'],[/í/g,'I'],[/ó/g,'O'],[/ú/g,'OU'],[/e/g,'é']].forEach(r=>s=s.replace(r[0],r[1]));
+ return s.replace(/§/g,'tch').replace(/¤/g,'kh').replace(/¢/g,'th')}
+function phl(t){return t.split(/([\p{L}’'-]+)/u).map((p,i)=>i%2?ph(p):p).join('')}
+function mkb(t,lbl){const b=document.createElement('button');b.className='b g sm';b.textContent=lbl||'🔊';b.onclick=()=>say(t);return b}
+function mkp(t){const p=document.createElement('span');p.className='ph';p.textContent=' ['+phl(t)+'] ';return p}
+function deco2(){const s=song();
+ if(tab=='tr'){const rs=[...document.querySelectorAll('#v [id^="r"]')].filter(d=>/^r\d+$/.test(d.id));if(!rs.length)return;
+  const c=document.createElement('div');c.className='card row';
+  c.innerHTML='<span>🔊 Accent</span><select style="width:auto" onchange="S.acc=this.value;sv();draw(true)">'+AC.map(a=>`<option value="${a[0]}" ${(S.acc||'es-ES')==a[0]?'selected':''}>${a[1]}</option>`).join('')+'</select><label><input type="checkbox" style="width:auto" '+(S.slow?'checked':'')+' onchange="S.slow=this.checked;sv()"> Lent</label><label><input type="checkbox" style="width:auto" '+(S.pho?'checked':'')+' onchange="S.pho=this.checked;sv();draw(true)"> Prononciation</label><div class="mu" style="width:100%">Lecture par la voix de ton appareil. Prononciation figurée à la française : « kh » = j espagnol, « ou » = u, majuscule = accent écrit.</div>';
+  document.querySelector('#v select').after(c);
+  rs.forEach(d=>{const i=+d.id.slice(1),l=s.lines[i];if(!l)return;const b=mkb(l.es,'🔊 Écouter');b.style.marginTop='8px';d.before(b);
+   if(S.pho){const p=mkp(l.es);p.style.display='block';d.before(p)}})}
+ if(tab=='voc')document.querySelectorAll('#v .card').forEach((c,i)=>{const v=S.vocab[i],b=c.querySelector('b');if(v&&b)b.after(' ',mkb(v.w),mkp(v.w))});
+ if(tab=='rev'&&card){const g=document.querySelector('#v .big');if(g){const d=document.createElement('div');d.append(mkb(card.w,'🔊 Écouter'),mkp(card.w));d.style.fontSize='16px';g.after(d)}}
+ const pb=document.querySelector('.pop b.es');if(pb&&pop)pb.after(' ',mkb(pop.w),mkp(pop.w))}
+const _d2=draw;draw=function(k){_d2(k);try{deco2()}catch(e){}};
+(function(){const n=document.createElement('div');n.className='notes';n.innerHTML=['♪','♫','♬','♩','♪','♫','♬','♩'].map((c,i)=>`<span style="left:${6+i*12}%;font-size:${18+i%3*10}px;animation-duration:${14+i*2.3}s;animation-delay:${-i*3.1}s">${c}</span>`).join('');document.body.prepend(n);
+ const sp=document.createElement('div');sp.className='splash';sp.innerHTML=document.querySelector('.logo').outerHTML+'<b>Cancionero</b>';document.body.append(sp);setTimeout(()=>sp.remove(),2200)})();
+function boom(n){n=n||30;const E=['🎉','✨','🎶','⭐','💃','🎸'];for(let i=0;i<n;i++){const s=document.createElement('span');s.textContent=E[i%6];s.style.cssText=`position:fixed;top:-30px;left:${Math.random()*100}vw;font-size:${16+Math.random()*18}px;z-index:99;pointer-events:none;animation:fall ${1.6+Math.random()*1.6}s ease-in forwards`;document.body.append(s);setTimeout(()=>s.remove(),3500)}}
+const _ck=chk;chk=function(){_ck();const i=[...document.querySelectorAll('.cl input')];if(i.length&&i.every(x=>x.classList.contains('ok')))boom()};
+const _an=ans;ans=function(k){_an(k);if(k)boom(10)};
+ld();draw();
+</script>
+</body>
+</html>
