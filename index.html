@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0e0a1f"><link rel="apple-touch-icon" href="icon-192.png">
 <title>Cancionero – Apprendre l’espagnol en chansons</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
 <style>
@@ -113,6 +114,7 @@ nav button{flex:1;padding:9px 4px;border:0;background:transparent;border-radius:
 .tp{color:#ffc857}.tr{color:#ff5c9d;letter-spacing:1px}.rr summary{cursor:pointer;font-weight:700}.rl{margin:10px 0}.rr .ib{display:inline-grid;height:30px;margin:2px 4px 2px 0}
 nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{flex:0 0 auto;padding:9px 13px}
 details.card summary{cursor:pointer}details.card[open] summary{margin-bottom:8px}.lg ul{margin:6px 0 0;padding-left:18px}.lg li{margin:3px 0}
+.qo{display:block;width:100%;text-align:left;margin:8px 0;padding:13px 14px;font-size:15px}
 </style>
 </head>
 <body>
@@ -303,7 +305,63 @@ const LOG=[['1.7',['Nouveaux onglets : Leçons, Prononciation et Log','Barre d�
 function vLog(){return LOG.map((l,i)=>`<div class='card lg'><b class='es'>Version ${l[0]}</b> ${i?'':`<span class='tag'>actuelle</span>`}<ul>${l[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}
 const VN={les:vLes,pro:vPro,log:vLog};
 const _d4=draw;draw=function(k){if(!VN[tab])return _d4(k);head();const y=window.scrollY;document.getElementById('v').innerHTML=VN[tab]();if(k)window.scrollTo(0,y)};
-ld();draw();
+LOG.unshift(['1.8',['Test de niveau de 20 questions (A1 à C1) au démarrage, refaisable dans l’onglet Niveau','Installation comme application, mode hors ligne','Téléchargement du fichier et sauvegarde de tes données']]);
+TABS.push(['niv','Niveau']);
+const QZ=[
+{l:'A1',q:'Complète : « Me ___ Ana. »',o:['llamo','llamas','llama','llaman']},
+{l:'A1',q:'Complète : « Yo ___ veinte años. »',o:['tengo','soy','estoy','hago']},
+{l:'A1',q:'Comment dit-on « merci » en espagnol ?',o:['Gracias','Perdón','Adiós','Hola']},
+{l:'A1',q:'Écoute. Où vit Carlos ?',t:'Me llamo Carlos y vivo en Madrid.',o:['À Madrid','À Barcelone','À Mexico','À Séville']},
+{l:'A2',q:'Complète : « Ayer ___ al cine con mis amigos. »',o:['fui','voy','iré','iba']},
+{l:'A2',q:'Complète : « Mi hermano es ___ que yo. »',o:['más alto','alto más','muy alto','tan altísimo']},
+{l:'A2',q:'Lis : « El tren sale a las ocho y cuarto. » À quelle heure part le train ?',o:['8 h 15','8 h 45','7 h 15','8 h 30']},
+{l:'A2',q:'Complète : « Busco ___ casa cerca del mar. »',o:['una','un','unos','uno']},
+{l:'B1',q:'Complète : « Si tuviera tiempo, ___ a visitarte. »',o:['iría','iré','iba','fuera']},
+{l:'B1',q:'Complète : « Cuando llegué, ellos ya ___. »',o:['se habían ido','se fueron','se irán','se van']},
+{l:'B1',q:'« Estoy harto de esperar » signifie :',o:['J’en ai assez d’attendre','J’ai faim d’attendre','Je suis content d’attendre','Je suis en retard']},
+{l:'B1',q:'Écoute. Que cherche cette personne, et pourquoi ?',t:'Perdona, ¿sabes si hay alguna farmacia por aquí cerca? Me duele mucho la cabeza.',o:['Une pharmacie, car elle a mal à la tête','Un médecin, car elle a mal au ventre','Un café, car elle est fatiguée','Une banque, car elle est perdue']},
+{l:'B2',q:'Complète : « Espero que mañana ___ buen tiempo. »',o:['haga','hace','hará','hizo']},
+{l:'B2',q:'Complète : « No creo que ___ razón. »',o:['tenga','tiene','tendrá','tenía']},
+{l:'B2',q:'Complète : « Se lo dije ___ no se enfadara. »',o:['para que','porque','aunque','pues']},
+{l:'B2',q:'Lis : « A pesar de que el proyecto parecía arriesgado, el equipo decidió seguir adelante. » Que fit l’équipe ?',o:['Elle continua malgré le risque','Elle abandonna le projet','Elle attendit','Elle changea de projet']},
+{l:'C1',q:'Complète : « Dudo que lo ___ terminado antes de que llegue el jefe. »',o:['hayan','han','habían','habrán']},
+{l:'C1',q:'« Me tiene sin cuidado lo que digan » signifie :',o:['Ce qu’ils disent m’est égal','Ce qu’ils disent m’inquiète','Je fais attention à ce qu’ils disent','Ce qu’ils disent me met en colère']},
+{l:'C1',q:'Complète : « Habría venido de no ___ tan tarde. »',o:['haberme enterado','enterarme','me enteré','me hubiera enterado']},
+{l:'C1',q:'« Estar en las nubes » signifie :',o:['Être distrait, rêveur','Être riche','Voyager en avion','Être malade']}];
+const LV=['A1','A2','B1','B2','C1'],LB={A0:'Débutant (pré-A1)',A1:'A1 · Découverte',A2:'A2 · Élémentaire',B1:'B1 · Seuil',B2:'B2 · Avancé',C1:'C1 · Autonome'},RC={A0:['met','ser','rac'],A1:['met','ser','rac'],A2:['ser','con','faux'],B1:['sub','con','faux'],B2:['arg','rac','sub'],C1:['arg','rac','faux']};
+let QS={i:-1,ans:[],p:[],show:false};
+function qstart(){QS={i:0,ans:[],p:QZ.map(q=>q.o.map((_,k)=>k).sort(()=>Math.random()-.5)),show:false};draw();window.scrollTo(0,0)}
+function qskip(){S.skip=true;sv();go('songs')}
+function qa(k){QS.ans[QS.i]=k;QS.i++;QS.show=false;if(QS.i>=QZ.length)qfin();draw();window.scrollTo(0,0)}
+function qfin(){const sc={};LV.forEach(l=>sc[l]=0);const wrong=[];QZ.forEach((q,i)=>{if(QS.ans[i]===0)sc[q.l]++;else wrong.push([q.q,QS.ans[i]>=0?q.o[QS.ans[i]]:'(sans réponse)',q.o[0]])});
+ let c='A0';for(const l of LV){if(sc[l]>=3)c=l;else break}
+ S.level={c,label:LB[c],sc,wrong,date:today()};S.skip=true;tick();setTimeout(()=>boom(c=='A0'?10:30),400)}
+function resH(L){return `<div class='card' style='text-align:center'><div class='mu'>Ton niveau estimé</div><div class='big' style='padding:8px'>${L.c=='A0'?'🌱':L.c}</div><b class='es'>${L.label}</b></div>
+<div class='card'><b>Détail par niveau</b>${LV.map(l=>`<div class='row' style='margin:8px 0'><span style='width:28px'>${l}</span><div class='bar' style='flex:1;margin:0'><i style='width:${L.sc[l]/4*100}%'></i></div><span>${L.sc[l]}/4</span></div>`).join('')}<p class='mu'>Un niveau est validé à partir de 3 bonnes réponses sur 4. Test indicatif, inspiré des niveaux du CECRL utilisés par les diplômes DELE et SIELE : il ne remplace pas un examen officiel.</p></div>
+<div class='card'><b>📚 Leçons conseillées</b>${RC[L.c].map(id=>`<div class='rl'>• ${LES.find(x=>x.id==id).t}</div>`).join('')}<div class='row' style='margin-top:8px'><button class='b' data-g='les' onclick='go(this.dataset.g)'>🎓 Ouvrir les leçons</button><button class='b g' data-g='songs' onclick='go(this.dataset.g)'>🎸 Mes chansons</button></div></div>
+<details class='card'><summary><b>🔍 Corrections (${L.wrong.length})</b></summary>${L.wrong.map(w=>`<div class='rl'><div>${w[0]}</div><div class='mu'>Ta réponse : ${esc(w[1])}</div><div style='color:var(--ok)'>Bonne réponse : ${esc(w[2])}</div></div>`).join('')||'<p>Aucune erreur, bravo !</p>'}</details>`}
+function vNiv(){const L=S.level;
+ if(QS.i>=QZ.length)return resH(L)+`<div class='row'><button class='b g' onclick='QS.i=-1;draw()'>Refaire le test</button></div>`;
+ if(QS.i<0)return `<div class='card'><b class='ttl'>🎯 Test de niveau</b><p>20 questions pour estimer ton niveau d’espagnol, de A1 à C1 (échelle CECRL). Grammaire, vocabulaire, lecture et deux questions d’écoute, comme dans les tests de placement et les examens DELE. Compte environ 10 minutes, sans dictionnaire.</p><div class='row'><button class='b' onclick='qstart()'>${L?'Refaire le test':'Commencer'}</button>${L?'':`<button class='b g' onclick='qskip()'>Passer pour l’instant</button>`}</div></div>`+(L?resH(L):'');
+ const q=QZ[QS.i];
+ return `<div class='card'><div class='mu'>Question ${QS.i+1} / ${QZ.length}</div><div class='bar'><i style='width:${QS.i/QZ.length*100}%'></i></div><p class='es' style='font-size:19px'>${q.q}</p>${q.t?`<div class='row'>${SB(q.t,'Écouter')}<button class='ib' onclick='QS.show=!QS.show;draw(true)'>👁 Texte</button></div>${QS.show?`<div class='ref'>${esc(q.t)}</div>`:''}`:''}${QS.p[QS.i].map(k=>`<button class='b g qo' onclick='qa(${k})'>${esc(q.o[k])}</button>`).join('')}<div class='row' style='margin-top:6px'><button class='ib' onclick='qa(-1)'>Je ne sais pas</button></div></div>`}
+VN.niv=vNiv;
+const _h=head;head=function(){_h();if(S.level)document.getElementById('st').textContent+=' · '+(S.level.c=='A0'?'Débutant':S.level.c)};
+let DP=null;const STAND=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();DP=e;if(tab=='songs'||tab=='log')draw(true)});
+window.addEventListener('appinstalled',()=>{DP=null;draw(true)});
+async function inst(){if(DP){DP.prompt();try{await DP.userChoice}catch(e){}DP=null;draw(true)}}
+function am(t){const e=document.getElementById('am');if(e)e.textContent=t}
+function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.append(a);a.click();a.remove()}
+async function dlself(){try{const r=await fetch(location.href.split('#')[0]);dl(await r.blob(),'cancionero.html');am('Fichier téléchargé.')}catch(e){am('Téléchargement indisponible ici : ouvre la version installée ou ton site.')}}
+function expd(){dl(new Blob([JSON.stringify(S)],{type:'application/json'}),'cancionero-donnees.json');am('Sauvegarde créée.')}
+function impd(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{S=Object.assign(S,JSON.parse(r.result));sv();draw();am('Données restaurées ✅')}catch(e){am('Fichier invalide.')}};r.readAsText(f)}
+function pick(){document.getElementById('imp').click()}
+function appCard(){const st=STAND();return `<div class='card'><b class='ttl'>📲 Application</b><p class='mu'>${st?'Tu utilises déjà la version installée ✅':'Installe Cancionero sur ton écran d’accueil : elle s’ouvre comme une vraie appli et fonctionne hors ligne.'}</p><div class='row'>${!st&&DP?`<button class='b' onclick='inst()'>📲 Installer l’application</button>`:''}<button class='b g' onclick='dlself()'>⬇️ Fichier .html</button><button class='b g' onclick='expd()'>💾 Sauvegarder mes données</button><button class='b g' onclick='pick()'>📂 Restaurer</button><input id='imp' type='file' accept='.json' style='display:none' onchange='impd(this)'></div><div id='am' class='mu' style='margin-top:6px'></div>${!st&&!DP?`<p class='mu'>Si le bouton d’installation n’apparaît pas : menu ⋮ de Chrome, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ». Sur iPhone : Partager, puis « Sur l’écran d’accueil ».</p>`:''}</div>`}
+const _vl=vLog;VN.log=function(){return appCard()+_vl()};
+const _vs=vSongs;vSongs=function(){return (DP&&!STAND()?`<div class='card row' style='justify-content:space-between'><span>📲 Installer l’appli sur ton téléphone</span><button class='b sm' onclick='inst()'>Installer</button></div>`:'')+_vs()};
+if('serviceWorker' in navigator&&location.protocol=='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+ld();if(!S.level&&!S.skip)tab='niv';draw();
 </script>
 </body>
 </html>
