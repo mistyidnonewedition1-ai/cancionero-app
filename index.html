@@ -410,6 +410,15 @@ const _d5=draw;draw=function(k){_d5(k);try{if(tab=='songs')document.querySelecto
  if(a&&emb(s.link)){const b=document.createElement('button');b.className='ib';b.textContent='▶';b.onclick=()=>play(s.id);a.replaceWith(b)}
  if(!s.lines.length&&s.st!='search'){const r=document.createElement('button');r.className='ib';r.textContent='🔎';r.onclick=()=>enrich(s.id);ic.prepend(r)}
  const tg=c.querySelector('.tag');if(tg&&s.st=='search')tg.textContent='🔎 recherche…'})}catch(e){}};
+LOG.unshift(['1.10',['Traduction automatique de référence : bouton « Voir la traduction » et préparation de toute la chanson (approximative)']]);
+async function mt(x){try{const r=await fetch('https://api.mymemory.translated.net/get?langpair='+encodeURIComponent('es|fr')+'&q='+encodeURIComponent(x));const j=await r.json(),t=j&&j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY WARNING|INVALID/i.test(t)){const e=document.createElement('textarea');e.innerHTML=t;return e.value}}catch(e){}return null}
+async function rv(i){const s=song(),l=s.lines[i],d=document.getElementById('r'+i);if(!d)return;
+ if(l.fr){d.innerHTML=`<div class='ref'>${esc(l.fr)}${l.mt?` <span class='mu'>(traduction automatique, approximative)</span>`:''}</div>`;return}
+ d.innerHTML=`<div class='ref mu'>Traduction en cours…</div>`;
+ const t=await mt(l.es);
+ if(t){l.fr=t;l.mt=1;sv();rv(i)}else d.innerHTML=`<div class='ref'><span class='mu'>Traduction automatique indisponible pour l’instant. Compare avec : </span>${dict(l.es)}</div>`}
+async function allmt(b){const s=song();for(let i=0;i<s.lines.length;i++){const l=s.lines[i];if(l.fr)continue;b.textContent='🌐 '+(i+1)+' / '+s.lines.length+'…';const t=await mt(l.es);if(!t){sv();b.textContent='🌐 Service indisponible ou limite atteinte, réessaie plus tard';return}l.fr=t;l.mt=1;await new Promise(r=>setTimeout(r,250))}sv();b.textContent='✅ Traductions prêtes (visibles avec « Voir la traduction »)'}
+const _b2=bar;bar=function(s){const h=_b2(s);if(!s.lines.length||s.lines.every(l=>l.fr))return h;return h.slice(0,-6)+`<a href='#' onclick='allmt(this);return false'>🌐 Préparer les traductions</a></div>`};
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 </script>
 </body>
