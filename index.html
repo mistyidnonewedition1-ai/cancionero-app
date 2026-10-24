@@ -110,6 +110,7 @@ nav button{flex:1;padding:9px 4px;border:0;background:transparent;border-radius:
 .song{flex-wrap:nowrap;cursor:default}.song>div:first-child{flex:1;cursor:pointer}.cov{width:44px;height:44px;font-size:20px;border-radius:13px}
 .tx{min-width:0}.tx b{display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ic{gap:6px;flex-wrap:nowrap}.ib{min-width:34px;height:34px;padding:0 8px;display:grid;place-items:center;border:1px solid var(--bd);border-radius:10px;background:transparent;color:var(--tx);text-decoration:none;font:inherit;font-size:14px;cursor:pointer}
+.tp{color:#ffc857}.tr{color:#ff5c9d;letter-spacing:1px}.rr summary{cursor:pointer;font-weight:700}.rl{margin:10px 0}.rr .ib{display:inline-grid;height:30px;margin:2px 4px 2px 0}
 </style>
 </head>
 <body>
@@ -254,6 +255,16 @@ head=function(){document.getElementById('st').textContent='🔥 '+S.streak+' j �
 vSongs=function(){return `<div class="card row addr"><textarea id="nl" rows="1" placeholder="＋ Colle un lien ou des paroles…"></textarea><button class="b" onclick="addl()">Ajouter</button></div>`+
  S.songs.map(s=>{const h=[...s.title].reduce((a,c)=>a+c.charCodeAt(0),0)%360;return `<div class="card sg song"><div onclick="cur=${s.id};go('tr')"><div class="cov" style="background:linear-gradient(135deg,hsl(${h},70%,52%),hsl(${(h+45)%360},80%,60%))">♪</div><div class="tx"><b class="es">${esc(s.title)}</b><div class="mu">${esc(s.artist)} · ${s.lines.length?s.lines.length+' lignes':'<span class="tag">paroles à ajouter</span>'}</div></div></div>
 <div class="row ic">${s.link?`<a class="ib" href="${esc(s.link)}" target="_blank" rel="noopener">▶</a>`:''}<button class="ib" onclick="cur=${s.id};song().edit=true;go('tr')">✏️</button><button class="ib" onclick="dels(${s.id})">${pend==s.id?'Sûr ?':'✕'}</button></div></div>`}).join('')};
+const _ph=ph;ph=function(w){let s=w.toLowerCase().replace(/rr/g,'¶').replace(/^r/,'¶').replace(/([nls])r/g,'$1¶');return _ph(s).replace(/¶/g,'rrr')};
+mkp=function(t){const p=document.createElement('span');p.className='ph';p.innerHTML=' ['+esc(phl(t)).replace(/rrr|r/g,m=>`<b class="${m=='r'?'tp':'tr'}">${m}</b>`)+'] ';return p};
+const _d3=draw;draw=function(k){_d3(k);try{if(tab!='tr')return;const sel=document.querySelector('#v .card.row select');if(!sel)return;const B=(t,l)=>`<button class="ib" data-t="${t}" onclick="say(this.dataset.t)">🔊 ${l||t}</button>`;
+ sel.closest('.card').insertAdjacentHTML('afterend',`<details class="card rr"><summary>🌀 Les 3 sons du R</summary>
+<div class="mu">Dans la prononciation : <b class="tp">r</b> = R simple, <b class="tr">rrr</b> = R roulée.</div>
+<div class="rl"><b class="tp">R simple</b> (pero, caro, para) : un seul petit battement de la pointe de la langue contre le palais, juste derrière les dents du haut, comme un « d » très rapide. ${B('pero')}${B('caro')}${B('para')}</div>
+<div class="rl"><b class="tr">R roulée</b> : on l’écrit rr (perro, carro), ou r au début d’un mot (rojo, rápido), ou après n, l, s (honra, alrededor). La langue vibre plusieurs fois, comme un petit moteur. ${B('perro')}${B('rojo')}${B('honra')}</div>
+<div class="rl"><b class="tp">R en fin de syllabe</b> (comer, parte, mar) : un battement léger, parfois à peine entendu. ${B('comer')}${B('parte')}${B('mar')}</div>
+<div class="rl">⚠️ Un seul r change tout le mot. À écouter en comparant : ${B('pero')}${B('perro')} · ${B('caro')}${B('carro')} · ${B('cero')}${B('cerro')} · ${B('coro')}${B('corro')}</div>
+<div class="rl">Entraînement (virelangue) : ${B('El perro de San Roque no tiene rabo, porque Ramón Ramírez se lo ha cortado.','Écouter la phrase')}</div></details>`)}catch(e){}};
 ld();draw();
 </script>
 </body>
