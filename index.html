@@ -115,6 +115,11 @@ nav button{flex:1;padding:9px 4px;border:0;background:transparent;border-radius:
 nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{flex:0 0 auto;padding:9px 13px}
 details.card summary{cursor:pointer}details.card[open] summary{margin-bottom:8px}.lg ul{margin:6px 0 0;padding-left:18px}.lg li{margin:3px 0}
 .qo{display:block;width:100%;text-align:left;margin:8px 0;padding:13px 14px;font-size:15px}
+#dock{position:fixed;left:0;right:0;margin:0 auto;bottom:0;width:100%;max-width:760px;z-index:50;background:var(--sf);border:1px solid var(--bd);border-radius:18px 18px 0 0;box-shadow:0 -10px 30px -10px #000;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
+#dock .dh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}#dock .dh b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+#dock iframe{width:100%;height:210px;border:0;border-radius:12px;display:block;background:#000}
+#dock.min iframe{height:1px;opacity:0;pointer-events:none;margin:0}
+body.dk .wrap{padding-bottom:300px}body.dk.mn .wrap{padding-bottom:90px}
 </style>
 </head>
 <body>
@@ -361,6 +366,50 @@ function appCard(){const st=STAND();return `<div class='card'><b class='ttl'>�
 const _vl=vLog;VN.log=function(){return appCard()+_vl()};
 const _vs=vSongs;vSongs=function(){return (DP&&!STAND()?`<div class='card row' style='justify-content:space-between'><span>📲 Installer l’appli sur ton téléphone</span><button class='b sm' onclick='inst()'>Installer</button></div>`:'')+_vs()};
 if('serviceWorker' in navigator&&location.protocol=='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+LOG.unshift(['1.9',['Paroles trouvées automatiquement à partir d’un lien ou d’un « Artiste - Titre » (la saisie manuelle reste disponible)','Lecteur intégré : YouTube, Spotify, SoundCloud, Deezer, sans quitter l’appli']]);
+const gen=['YouTube','Spotify','Deezer','Apple Music','SoundCloud','Genius','Musixmatch','Lien','Texte','Recherche'];
+function emb(u){try{const x=new URL(u),h=x.hostname.replace('www.',''),q=x.pathname.split('/').filter(Boolean);
+ if(h=='youtu.be')return{k:'yt',id:q[0]};
+ if(h.endsWith('youtube.com')){const v=x.searchParams.get('v');if(v)return{k:'yt',id:v};if(['shorts','embed','live'].includes(q[0]))return{k:'yt',id:q[1]}}
+ if(h=='open.spotify.com'){const i=q.findIndex(z=>['track','album','playlist','episode'].includes(z));if(i>=0&&q[i+1])return{k:'sp',t:q[i],id:q[i+1]}}
+ if(h.endsWith('soundcloud.com'))return{k:'sc',u};
+ if(h.endsWith('deezer.com')){const i=q.indexOf('track');if(i>=0)return{k:'dz',id:q[i+1]}}}catch(e){}return null}
+function esrc(e){if(e.k=='yt')return 'https://www.youtube.com/embed/'+e.id+'?autoplay=1&playsinline=1&rel=0';if(e.k=='sp')return 'https://open.spotify.com/embed/'+e.t+'/'+e.id;if(e.k=='sc')return 'https://w.soundcloud.com/player/?auto_play=true&url='+encodeURIComponent(e.u);return 'https://widget.deezer.com/widget/dark/track/'+e.id}
+let DK=null;
+function play(id){const s=S.songs.find(x=>x.id==id);if(!s)return;const e=s.link&&emb(s.link);if(!e){if(s.link)window.open(s.link,'_blank');return}DK={id:s.id,min:false,e};dock()}
+function dock(){let d=document.getElementById('dock');if(!DK){if(d)d.remove();document.body.classList.remove('dk','mn');return}
+ if(!d){d=document.createElement('div');d.id='dock';document.body.append(d)}
+ const s=S.songs.find(x=>x.id==DK.id)||{title:'',link:''};d.className='';document.body.classList.remove('mn');
+ d.innerHTML=`<div class='dh'><b class='es'>🎧 ${esc(s.title)}</b><span class='row' style='flex-wrap:nowrap'><a class='ib' href='${esc(s.link)}' target='_blank' rel='noopener'>↗</a><button class='ib' id='dmin' onclick='dockc()'>▼</button><button class='ib' onclick='DK=null;dock()'>✕</button></span></div>${location.hostname.includes('claude')?`<div class='mu' style='padding:14px 4px'>Le lecteur intégré est bloqué dans l’aperçu Claude. Il fonctionne sur ton site Vercel. Utilise ↗ pour ouvrir le lien.</div>`:`<iframe src='${esrc(DK.e)}' allow='autoplay; encrypted-media; picture-in-picture; fullscreen' allowfullscreen></iframe><div class='mu' style='font-size:12px;margin-top:4px'>Lecteur bloqué ? Appuie sur ↗ pour ouvrir le lien.</div>`}`;
+ document.body.classList.add('dk')}
+function dockc(){DK.min=!DK.min;document.getElementById('dock').classList.toggle('min',DK.min);document.body.classList.toggle('mn',DK.min);document.getElementById('dmin').textContent=DK.min?'▲':'▼'}
+function strip(t){let o='',d=0;for(const c of t){if('([{'.includes(c))d++;else if(')]}'.includes(c))d=Math.max(0,d-1);else if(!d)o+=c}return o.replace(/ +/g,' ').trim()}
+async function meta(u){const j=async x=>{const r=await fetch(x);if(!r.ok)throw 0;return r.json()};let d=null;
+ for(const x of ['https://noembed.com/embed?url=','https://www.youtube.com/oembed?format=json&url=','https://open.spotify.com/oembed?url=']){try{d=await j(x+encodeURIComponent(u));if(d&&d.title)break}catch(e){d=null}}
+ if(!d||!d.title)return null;let t=strip(d.title).replace(/ [–—] /g,' - '),a=strip(d.author_name||'').replace(/vevo|- topic/ig,'').trim();
+ const m=t.split(' - ');if(m.length>1){a=m[0].trim();t=m.slice(1).join(' - ').trim()}return{t:cap(t),a:cap(a)}}
+async function lyr(a,t){const g=gen.includes(a)?'':a,j=async u=>{const r=await fetch(u);if(!r.ok)throw 0;return r.json()},cl=x=>x.split('\n').map(l=>l.trim()).filter(l=>l&&!(l[0]=='['&&l.endsWith(']'))).slice(0,220);
+ try{const R=await j('https://lrclib.net/api/search?q='+encodeURIComponent((g+' '+t).trim())),h=R.find(x=>x.plainLyrics);if(h)return{l:cl(h.plainLyrics),t:h.trackName,a:h.artistName}}catch(e){}
+ if(g){try{const r=await j('https://api.lyrics.ovh/v1/'+encodeURIComponent(g)+'/'+encodeURIComponent(t));if(r.lyrics)return{l:cl(r.lyrics),t:t,a:g}}catch(e){}}
+ return null}
+async function enrich(id){const s=S.songs.find(x=>x.id==id);if(!s)return;s.st='search';sv();draw(true);
+ try{if(s.link&&!s.meta){const m=await meta(s.link);s.meta=1;if(m){if(m.t)s.title=m.t;if(m.a)s.artist=m.a}}
+  if(/^Chanson /.test(s.title)&&gen.includes(s.artist))throw 0;
+  const R=await lyr(s.artist,s.title);
+  if(R&&R.l.length){s.lines=R.l.map(es=>({es,fr:''}));s.auto=1;s.st='ok';s.rate={};s.my={};if(gen.includes(s.artist)&&R.a)s.artist=R.a;if(/^Chanson /.test(s.title)&&R.t)s.title=R.t}else s.st='fail'}
+ catch(e){s.st='fail'}
+ sv();draw(true)}
+const _addl=addl;
+addl=function(){const n=S.songs.length,L=document.getElementById('nl').value.split('\n').map(x=>x.trim()).filter(Boolean);if(!L.length)return;
+ if(L.length==1&&!/^https?:/i.test(L[0])&&L[0].length<90){const m=L[0].split(' - '),s=mk({p:'Recherche',t:m.length>1?m.slice(1).join(' - '):m[0],a:m.length>1?m[0]:'',u:''},[]);S.songs.push(s);cur=s.id;tick();go('songs');enrich(s.id);return}
+ _addl();S.songs.slice(n).filter(s=>!s.lines.length).forEach(s=>enrich(s.id))};
+bar=function(s){const q=encodeURIComponent(s.title+' '+s.artist+' letra'),e=s.link&&emb(s.link);return `<div class='chips'>${e?`<a href='#' data-i='${s.id}' onclick='play(this.dataset.i);return false'>▶ Écouter ici</a>`:''}${s.link?`<a href='${esc(s.link)}' target='_blank' rel='noopener'>↗ Ouvrir</a>`:''}${!s.lines.length?`<a href='#' data-i='${s.id}' onclick='enrich(this.dataset.i);return false'>🔎 Chercher les paroles</a>`:''}<a href='https://genius.com/search?q=${q}' target='_blank' rel='noopener'>📜 Genius</a><a href='https://www.google.com/search?q=${q}' target='_blank' rel='noopener'>🔎 Google</a>${s.auto&&s.lines.length?`<div class='mu' style='width:100%'>Paroles trouvées automatiquement : vérifie qu’elles correspondent bien à la chanson (✏️ pour corriger).</div>`:''}</div>`};
+const _pb=pasteBox;pasteBox=function(s){return (s.st=='search'?`<div class='card'>🔎 Recherche automatique des paroles…</div>`:s.st=='fail'?`<div class='card'>😕 Paroles introuvables automatiquement. Colle-les ci-dessous, ou corrige le titre et l’artiste puis relance la recherche.</div>`:'')+_pb(s)};
+const _vs2=vSongs;vSongs=function(){return _vs2().replace('Colle un lien ou des paroles…','Lien, « Artiste - Titre » ou paroles…')};
+const _d5=draw;draw=function(k){_d5(k);try{if(tab=='songs')document.querySelectorAll('#v .song').forEach((c,i)=>{const s=S.songs[i];if(!s)return;const ic=c.querySelector('.ic'),a=c.querySelector('a.ib');
+ if(a&&emb(s.link)){const b=document.createElement('button');b.className='ib';b.textContent='▶';b.onclick=()=>play(s.id);a.replaceWith(b)}
+ if(!s.lines.length&&s.st!='search'){const r=document.createElement('button');r.className='ib';r.textContent='🔎';r.onclick=()=>enrich(s.id);ic.prepend(r)}
+ const tg=c.querySelector('.tag');if(tg&&s.st=='search')tg.textContent='🔎 recherche…'})}catch(e){}};
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 </script>
 </body>
