@@ -120,6 +120,13 @@ details.card summary{cursor:pointer}details.card[open] summary{margin-bottom:8px
 #dock iframe{width:100%;height:210px;border:0;border-radius:12px;display:block;background:#000}
 #dock.min iframe{height:1px;opacity:0;pointer-events:none;margin:0}
 body.dk .wrap{padding-bottom:300px}body.dk.mn .wrap{padding-bottom:90px}
+.wrap{padding-bottom:84px}
+#mas{position:fixed;left:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:flex-end;gap:6px;pointer-events:none}#mas>*{pointer-events:auto}
+#mm{width:58px;height:58px;padding:0;border:0;background:none;cursor:pointer;animation:flt 3.6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+#mm .eye{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+#mb{max-width:min(250px,62vw);background:#fff;color:#1a1a2e;border-radius:16px 16px 16px 4px;padding:9px 11px;font-size:13.5px;line-height:1.35;box-shadow:0 8px 24px -8px #000;animation:pop .3s}#mb[hidden]{display:none}
+#mb .ib{color:#1a1a2e;border-color:#c8cce0;height:28px;min-width:0;font-size:12px;margin:4px 4px 0 0}
+body.dk #mas{bottom:calc(235px + env(safe-area-inset-bottom,0px))}body.dk.mn #mas{bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 </style>
 </head>
 <body>
@@ -419,6 +426,13 @@ async function rv(i){const s=song(),l=s.lines[i],d=document.getElementById('r'+i
  if(t){l.fr=t;l.mt=1;sv();rv(i)}else d.innerHTML=`<div class='ref'><span class='mu'>Traduction automatique indisponible pour l’instant. Compare avec : </span>${dict(l.es)}</div>`}
 async function allmt(b){const s=song();for(let i=0;i<s.lines.length;i++){const l=s.lines[i];if(l.fr)continue;b.textContent='🌐 '+(i+1)+' / '+s.lines.length+'…';const t=await mt(l.es);if(!t){sv();b.textContent='🌐 Service indisponible ou limite atteinte, réessaie plus tard';return}l.fr=t;l.mt=1;await new Promise(r=>setTimeout(r,250))}sv();b.textContent='✅ Traductions prêtes (visibles avec « Voir la traduction »)'}
 const _b2=bar;bar=function(s){const h=_b2(s);if(!s.lines.length||s.lines.every(l=>l.fr))return h;return h.slice(0,-6)+`<a href='#' onclick='allmt(this);return false'>🌐 Préparer les traductions</a></div>`};
+const MASC=`<svg viewBox='0 0 64 64' width='58' height='58' aria-label='Lolo le perroquet'><ellipse cx='17' cy='41' rx='5' ry='11' fill='#1f9d5c' transform='rotate(10 17 41)'/><ellipse cx='47' cy='41' rx='5' ry='11' fill='#1f9d5c' transform='rotate(-10 47 41)'/><ellipse cx='32' cy='40' rx='16' ry='17' fill='#2fbf71'/><ellipse cx='32' cy='43' rx='9' ry='11' fill='#a8ec86'/><rect x='24' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><rect x='35' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><circle cx='32' cy='23' r='14' fill='#2fbf71'/><ellipse cx='27' cy='9' rx='3' ry='6' fill='#ff5a6e' transform='rotate(-20 27 9)'/><ellipse cx='32' cy='7' rx='3' ry='6' fill='#ffd166'/><ellipse cx='37' cy='9' rx='3' ry='6' fill='#ff5a6e' transform='rotate(20 37 9)'/><g class='eye'><circle cx='26.5' cy='22' r='4.6' fill='#fff'/><circle cx='37.5' cy='22' r='4.6' fill='#fff'/><circle cx='27' cy='22.5' r='2.2' fill='#10162b'/><circle cx='37' cy='22.5' r='2.2' fill='#10162b'/></g><path d='M27.5 27q4.5-3 9 0q-1 8-4.5 9q-3.5-1-4.5-9z' fill='#ffb02e'/><path d='M16 23a16 16 0 0 1 32 0' fill='none' stroke='#1b1f3a' stroke-width='3'/><rect x='12.5' y='20' width='6' height='11' rx='3' fill='#ff5a6e'/><rect x='45.5' y='20' width='6' height='11' rx='3' fill='#ff5a6e'/></svg>`;
+const MS=[['Salut ! Je suis Lolo. Touche un mot des paroles pour le garder.','¡Hola, amigo!','Salut, ami !'],['Astuce : écoute la chanson une fois sans lire, puis traduis vers par vers.'],['Le saviez-vous ? En espagnol, la lettre h est toujours muette.','hola','salut'],['Le R roulé, ça s’entraîne : essaie perro dans l’onglet Prononc.','perro','chien'],['Un peu chaque jour, c’est la clé. 🎶'],['Tes mots t’attendent dans l’onglet Réviser.','¡Vamos a repasar!','On va réviser !'],['Tu peux changer l’accent (Espagne, Mexique…) dans l’onglet Prononc.','¿Qué tal?','Comment ça va ?'],['Allez, on chante ?','¡A cantar!','On chante !']];
+const PR=['¡Olé! 🎉','¡Muy bien!','¡Genial!','¡Qué crack!','¡Bravo! 👏'];
+let mi=0,mto;
+function mas(m){const b=document.getElementById('mb');let h;if(typeof m=='string')h=esc(m);else{const x=MS[mi++%MS.length];h=esc(x[0])+(x[1]?`<div>${SB(x[1])} <span style='opacity:.7'>${esc(x[2]||'')}</span></div>`:'')}b.innerHTML=h;b.hidden=false;clearTimeout(mto);mto=setTimeout(()=>{b.hidden=true},8000)}
+(function(){const d=document.createElement('div');d.id='mas';d.innerHTML=`<button id='mm' aria-label='Mascotte' onclick='mas()'>${MASC}</button><div id='mb' hidden></div>`;document.body.append(d);setTimeout(()=>mas(MS[0][0]),1800)})();
+const _bm=boom;boom=function(n){_bm(n);mas(PR[Math.floor(Math.random()*PR.length)])};
 try{localStorage.setItem('lang','es')}catch(e){}
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 </script>
