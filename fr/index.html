@@ -56,6 +56,24 @@ body.dk .wrap{padding-bottom:300px}body.dk.mn .wrap{padding-bottom:90px}
 #mb{max-width:min(250px,62vw);background:#fff;color:#1a1a2e;border-radius:16px 16px 16px 4px;padding:9px 11px;font-size:13.5px;line-height:1.35;box-shadow:0 8px 24px -8px #000;animation:pop .3s}#mb[hidden]{display:none}
 #mb .ib{color:#1a1a2e;border-color:#c8cce0;height:28px;min-width:0;font-size:12px;margin:4px 4px 0 0}
 body.dk #mas{bottom:calc(235px + env(safe-area-inset-bottom,0px))}body.dk.mn #mas{bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+header{background-size:220% 220%;animation:flow 10s ease infinite;position:relative;overflow:hidden}header>*{position:relative;z-index:1}
+header:after{content:'♪ ♫ ♬';position:absolute;right:14px;top:-10px;font-size:54px;opacity:.14;letter-spacing:6px}
+.logo rect:nth-of-type(2),.logo rect:nth-of-type(3),.logo rect:nth-of-type(4){animation:bar 1.6s infinite}.logo rect:nth-of-type(3){animation-delay:.25s}.logo rect:nth-of-type(4){animation-delay:.5s}
+#v>*:nth-child(2){animation-delay:.06s}#v>*:nth-child(3){animation-delay:.12s}#v>*:nth-child(4){animation-delay:.18s}#v>*:nth-child(5){animation-delay:.24s}#v>*:nth-child(n+6){animation-delay:.3s}
+.card{transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-2px);border-color:#4a5aa6}
+.cov{transition:transform .3s}.sg:hover .cov{transform:rotate(-7deg) scale(1.1)}
+nav button{transition:transform .2s}nav button:hover{transform:translateY(-2px)}nav button.on{box-shadow:0 6px 18px -4px rgba(255,90,110,.6)}
+.w:active{transform:scale(.9)}.qo{transition:transform .2s}.qo:hover{transform:translateX(5px)}
+.bar i{background:linear-gradient(90deg,var(--ok),var(--bl),var(--ok));background-size:200% 100%;animation:grow .9s backwards,shine 2.5s linear infinite}
+.cl input.ko{animation:shake .4s}.cl input.ok{animation:pop .4s}
+button.b,nav button{position:relative;overflow:hidden}.rp{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .55s ease-out forwards;pointer-events:none}
+.wrap{position:relative;z-index:1}.notes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.notes span{position:absolute;bottom:0;color:#7da6ff;opacity:0;animation:drift linear infinite}
+#mm.jump{animation:jump .6s}
+.splash{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);animation:out .6s 1.4s forwards}.splash .logo{width:120px;height:120px;animation:pop .8s,flt 3s .8s infinite}.splash b{font:800 36px Fraunces,Georgia,serif;background:linear-gradient(90deg,#4f8cff,#fff,#ff5a6e);-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .8s .3s backwards}
+@keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}@keyframes bar{0%,100%{opacity:.35}50%{opacity:1}}@keyframes shine{to{background-position:-200% 0}}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}@keyframes rip{to{transform:scale(3);opacity:0}}
+@keyframes drift{0%{transform:translateY(105vh) rotate(0);opacity:0}10%{opacity:.4}90%{opacity:.3}100%{transform:translateY(-12vh) rotate(40deg);opacity:0}}
+@keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px) scale(1.1)}}@keyframes out{to{opacity:0;visibility:hidden}}
 </style>
 </head>
 <body>
@@ -218,6 +236,12 @@ let mi=0,mto;
 function mas(m){const b=document.getElementById('mb');let h;if(typeof m=='string')h=esc(m);else{const x=MS[mi++%MS.length];h=esc(x[0])+(x[1]?`<div>${SB(x[1])} <span style='opacity:.7'>${esc(x[2]||'')}</span></div>`:'')}b.innerHTML=h;b.hidden=false;clearTimeout(mto);mto=setTimeout(()=>{b.hidden=true},8000)}
 (function(){const d=document.createElement('div');d.id='mas';d.innerHTML=`<button id='mm' aria-label='Mascota' onclick='mas()'>${MASC}</button><div id='mb' hidden></div>`;document.body.append(d);setTimeout(()=>mas(MS[0][0]),1800)})();
 const _bm=boom;boom=function(n){_bm(n);mas(PR[Math.floor(Math.random()*PR.length)])};
+(function(){const n=document.createElement('div');n.className='notes';n.innerHTML=['♪','🥖','♫','♬','🥐','♩','🗼','♪'].map((c,i)=>`<span style='left:${5+i*12}%;font-size:${18+i%3*10}px;animation-duration:${14+i*2.3}s;animation-delay:${-i*3.1}s'>${c}</span>`).join('');document.body.prepend(n);
+ const sp=document.createElement('div');sp.className='splash';sp.innerHTML=document.querySelector('.logo').outerHTML+'<b>Chansonnier</b>';document.body.append(sp);setTimeout(()=>sp.remove(),2200)})();
+document.addEventListener('pointerdown',e=>{const b=e.target.closest&&e.target.closest('button.b,nav button');if(!b)return;const r=b.getBoundingClientRect(),s=Math.max(r.width,r.height),d=document.createElement('span');d.className='rp';d.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;b.append(d);setTimeout(()=>d.remove(),600)});
+const _ms=mas;mas=function(m){_ms(m);const b=document.getElementById('mm');b.classList.add('jump');setTimeout(()=>b.classList.remove('jump'),650)};
+const _av=addv;addv=function(){const n=S.vocab.length;_av();if(S.vocab.length>n)_bm(6)};
+const _rt=rt;rt=function(i,r){_rt(i,r);if(r=='ok')_bm(5)};
 try{localStorage.setItem('lang','fr')}catch(e){}
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 </script>
