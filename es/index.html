@@ -136,6 +136,7 @@ body.dk #mas{bottom:calc(235px + env(safe-area-inset-bottom,0px))}body.dk.mn #ma
 <main id="v"></main>
 </div>
 <script src="../themes.js"></script>
+<script src="../extras.js"></script>
 <script>
 const TABS=[['songs','Chansons'],['tr','Traduire'],['cl','Trous'],['voc','Vocabulaire'],['rev','Réviser']];
 let tab='songs',S={songs:[],vocab:[],streak:0,last:'',ex:0},cur=null,pop=null,card=null,show=false,clz=null;
@@ -434,10 +435,12 @@ let mi=0,mto;
 function mas(m){const b=document.getElementById('mb');let h;if(typeof m=='string')h=esc(m);else{const x=MS[mi++%MS.length];h=esc(x[0])+(x[1]?`<div>${SB(x[1])} <span style='opacity:.7'>${esc(x[2]||'')}</span></div>`:'')}b.innerHTML=h;b.hidden=false;clearTimeout(mto);mto=setTimeout(()=>{b.hidden=true},8000)}
 (function(){const d=document.createElement('div');d.id='mas';d.innerHTML=`<button id='mm' aria-label='Mascotte' onclick='mas()'>${MASC}</button><div id='mb' hidden></div>`;document.body.append(d);setTimeout(()=>mas(MS[0][0]),1800)})();
 const _bm=boom;boom=function(n){_bm(n);mas(PR[Math.floor(Math.random()*PR.length)])};
+if(window.EX){LOG.unshift(...EX.logEntries());TABS.push(['ju','Jeux'],['pg','Progrès']);VN.ju=()=>EX.games();VN.pg=()=>EX.prog()}
 TABS.push(['thm','Thèmes']);VN.thm=()=>window.TH?TH.view():`<div class='card'>Les thèmes festifs sont disponibles sur ton site.</div>`;
 try{localStorage.setItem('lang','es')}catch(e){}
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 window.TH&&TH.init('es');
+window.EX&&EX.init('es');
 </script>
 </body>
 </html>
