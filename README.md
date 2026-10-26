@@ -6,5 +6,6 @@ Apprendre l’espagnol (francophones, avec Lolo le perroquet) ou le français (h
 - `/es/` : Cancionero
 - `/fr/` : Chansonnier
 - `skin.css`, `skin.js` : style vif et icônes
+- `sfx.js` : bruitages (Web Audio)
 - `themes.js` : thèmes festifs partagés
 - `extras.js` : jeux, progrès, enregistrement vocal, journal
