@@ -22,6 +22,15 @@ h1{font:800 34px Fraunces,Georgia,serif;margin:10px 0 2px;background:linear-grad
 .note{color:var(--mu);font-size:13px;margin-top:20px}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}@keyframes flt{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.cr{margin-top:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:var(--tx);padding:9px 18px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer;transition:transform .2s}.cr:hover{transform:translateY(-2px)}
+#crm{position:fixed;inset:0;z-index:50;background:rgba(5,2,20,.82);display:grid;place-items:center;padding:14px}#crm[hidden]{display:none}
+#crm .p{width:100%;max-width:520px;max-height:100%;overflow:auto;background:linear-gradient(150deg,rgba(255,255,255,.1),rgba(255,255,255,.02)),var(--sf);border:1px solid rgba(255,255,255,.2);border-top:3px solid #ff3d81;border-radius:22px;padding:18px;text-align:left;animation:up .35s}
+#crm h2{font:800 24px Fraunces,Georgia,serif;margin:0}#crm h3{font:700 16px Fraunces,Georgia,serif;margin:16px 0 4px;color:#ffc933}
+#crm p,#crm li{font-size:14.5px;line-height:1.5;color:#e4defc;margin:4px 0}#crm ul{padding-left:18px;margin:4px 0}
+#crm .top{display:flex;justify-content:space-between;align-items:center;gap:8px}#crm .lsw{display:flex;gap:6px;margin:10px 0 2px}
+#crm .lsw button,#crm .x{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:var(--tx);border-radius:12px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+#crm .lsw button.on{background:linear-gradient(135deg,#7c4dff,#ff3d81);border-color:transparent}
+#crm .ver{margin-top:14px;font-size:12px;color:var(--mu);text-align:center}
 </style>
 </head>
 <body>
@@ -33,12 +42,38 @@ h1{font:800 34px Fraunces,Georgia,serif;margin:10px 0 2px;background:linear-grad
 <a class="lc" data-l="es" href="es/"><div class="fl"><svg viewBox='0 0 64 64' aria-label='Lolo'><ellipse cx='17' cy='41' rx='5' ry='11' fill='#1f9d5c' transform='rotate(10 17 41)'/><ellipse cx='47' cy='41' rx='5' ry='11' fill='#1f9d5c' transform='rotate(-10 47 41)'/><ellipse cx='32' cy='40' rx='16' ry='17' fill='#2fbf71'/><ellipse cx='32' cy='43' rx='9' ry='11' fill='#a8ec86'/><rect x='24' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><rect x='35' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><circle cx='32' cy='23' r='14' fill='#2fbf71'/><ellipse cx='27' cy='9' rx='3' ry='6' fill='#ff5a6e' transform='rotate(-20 27 9)'/><ellipse cx='32' cy='7' rx='3' ry='6' fill='#ffd166'/><ellipse cx='37' cy='9' rx='3' ry='6' fill='#ff5a6e' transform='rotate(20 37 9)'/><g class='eye'><circle cx='26.5' cy='22' r='4.6' fill='#fff'/><circle cx='37.5' cy='22' r='4.6' fill='#fff'/><circle cx='27' cy='22.5' r='2.2' fill='#10162b'/><circle cx='37' cy='22.5' r='2.2' fill='#10162b'/></g><path d='M27.5 27q4.5-3 9 0q-1 8-4.5 9q-3.5-1-4.5-9z' fill='#ffb02e'/><path d='M16 23a16 16 0 0 1 32 0' fill='none' stroke='#1b1f3a' stroke-width='3'/><rect x='12.5' y='20' width='6' height='11' rx='3' fill='#ff5a6e'/><rect x='45.5' y='20' width='6' height='11' rx='3' fill='#ff5a6e'/></svg></div><div><b>🇪🇸 Apprendre l’espagnol</b><span>Avec Lolo le perroquet · pour francophones</span></div><div class="ar">›</div></a>
 <a class="lc" data-l="fr" href="fr/"><div class="fl"><svg viewBox='0 0 64 64' aria-label='Coco'><ellipse cx='13' cy='36' rx='5' ry='12' fill='#ff5a6e' transform='rotate(-25 13 36)'/><ellipse cx='10' cy='39' rx='4' ry='10' fill='#4f8cff' transform='rotate(-35 10 39)'/><ellipse cx='17' cy='42' rx='5' ry='11' fill='#3f74d8' transform='rotate(10 17 42)'/><ellipse cx='47' cy='42' rx='5' ry='11' fill='#3f74d8' transform='rotate(-10 47 42)'/><ellipse cx='32' cy='40' rx='16' ry='17' fill='#fff4e0'/><rect x='24' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><rect x='35' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><circle cx='32' cy='23' r='14' fill='#fff4e0'/><circle cx='26.5' cy='9' r='4' fill='#ff5a6e'/><circle cx='32' cy='7' r='4.5' fill='#ff5a6e'/><circle cx='37.5' cy='9' r='4' fill='#ff5a6e'/><g class='eye'><circle cx='26.5' cy='22' r='4.6' fill='#fff' stroke='#e4d6bd' stroke-width='.8'/><circle cx='37.5' cy='22' r='4.6' fill='#fff' stroke='#e4d6bd' stroke-width='.8'/><circle cx='27' cy='22.5' r='2.2' fill='#10162b'/><circle cx='37' cy='22.5' r='2.2' fill='#10162b'/></g><path d='M28 26h8l-4 8z' fill='#ffc857'/><ellipse cx='32' cy='37' rx='3' ry='4' fill='#ff5a6e'/><path d='M16 23a16 16 0 0 1 32 0' fill='none' stroke='#1b1f3a' stroke-width='3'/><rect x='12.5' y='20' width='6' height='11' rx='3' fill='#4f8cff'/><rect x='45.5' y='20' width='6' height='11' rx='3' fill='#4f8cff'/></svg></div><div><b>🇫🇷 Aprender francés</b><span>Con Coco el gallo · para hispanohablantes</span></div><div class="ar">›</div></a>
 <p class="note">Ton choix est mémorisé. Le bouton 🌍 de l’appli permet de changer de langue.<br>Tu elección se guarda. El botón 🌍 de la app permite cambiar de idioma.</p>
+<button class="cr" onclick="openCr()">ℹ️ Crédits · Créditos</button>
 </main>
+<div id="crm" hidden><div class="p" role="dialog" aria-modal="true"><div class="top"><h2 id="crt">Crédits</h2><button class="x" onclick="closeCr()" aria-label="Fermer">✕</button></div><div class="lsw"><button data-l="fr" onclick="crLang('fr')">Français</button><button data-l="es" onclick="crLang('es')">Español</button></div><div id="crb"></div></div></div>
 <script>
 (function(){let l=null;try{l=localStorage.getItem('lang')}catch(e){}
 if(location.hash!=='#choose'&&(l==='es'||l==='fr')){location.replace(l+'/');return}
 document.querySelectorAll('a[data-l]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('lang',a.dataset.l)}catch(e){}}));
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});})();
+</script>
+<script>
+/* Écris ton nom ici pour l’afficher dans les crédits : */
+const CREATEUR='NXMISTYI';
+const CR={
+fr:{t:'Crédits',s:[
+['👤 Qui ?','Conçue et dirigée par '+(CREATEUR||'le créateur de l’app')+', développée avec <b>Claude</b> (Claude Sonnet 5.5), l’assistant IA d’Anthropic. Les mascottes Lolo 🦜 et Coco 🐓, le logo, les animations et les thèmes ont été créés spécialement pour cette appli.'],
+['🛠️ Comment ?','Tout a été construit depuis un téléphone Android, en discutant avec Claude : Claude écrit le code, le créateur le teste, demande des changements, puis publie. Les versions sont sauvegardées sur GitHub, le site est hébergé sur Vercel, et les commandes sont lancées depuis Termux.'],
+['🧰 Avec quoi ?','<ul><li>HTML, CSS et JavaScript, sans framework</li><li>Voix de l’appareil (Web Speech), bruitages synthétisés (Web Audio) et micro (MediaRecorder)</li><li>Données enregistrées sur ton appareil (localStorage) et mode hors ligne (service worker)</li><li>Polices Google Fonts : Fraunces et DM Sans</li><li>Services tiers : LRCLIB et lyrics.ovh (paroles), MyMemory (traduction automatique), noembed et oEmbed (titres), lecteurs YouTube, Spotify, SoundCloud et Deezer</li></ul>'],
+['💡 Pourquoi ?','Parce que la musique est l’une des meilleures façons d’apprendre une langue : on retient les mots, la prononciation et la culture sans s’en rendre compte. L’idée : un outil gratuit, sans compte et sans publicité, qui rapproche francophones et hispanophones, chacun apprenant la langue de l’autre.'],
+['⚖️ À savoir','Les paroles appartiennent à leurs auteurs et ayants droit : l’appli n’en fournit aucune. Tu les saisis toi-même ou elles sont récupérées auprès de services tiers, pour un usage d’étude personnel. Les traductions automatiques sont approximatives. Le test de niveau est indicatif, inspiré du CECRL, et ne remplace pas un examen officiel (DELE, DELF…). Les marques citées appartiennent à leurs propriétaires.']]},
+es:{t:'Créditos',s:[
+['👤 ¿Quién?','Concebida y dirigida por '+(CREATEUR||'el creador de la app')+', desarrollada con <b>Claude</b> (Claude Sonnet 5.5), el asistente de IA de Anthropic. Las mascotas Lolo 🦜 y Coco 🐓, el logo, las animaciones y los temas se crearon especialmente para esta app.'],
+['🛠️ ¿Cómo?','Todo se construyó desde un teléfono Android, conversando con Claude: Claude escribe el código, el creador lo prueba, pide cambios y lo publica. Las versiones se guardan en GitHub, el sitio está alojado en Vercel y los comandos se ejecutan desde Termux.'],
+['🧰 ¿Con qué?','<ul><li>HTML, CSS y JavaScript, sin framework</li><li>Voz del dispositivo (Web Speech), sonidos sintetizados (Web Audio) y micrófono (MediaRecorder)</li><li>Datos guardados en tu dispositivo (localStorage) y modo sin conexión (service worker)</li><li>Fuentes de Google Fonts: Fraunces y DM Sans</li><li>Servicios de terceros: LRCLIB y lyrics.ovh (letras), MyMemory (traducción automática), noembed y oEmbed (títulos), reproductores de YouTube, Spotify, SoundCloud y Deezer</li></ul>'],
+['💡 ¿Por qué?','Porque la música es una de las mejores formas de aprender un idioma: se retienen las palabras, la pronunciación y la cultura sin darse cuenta. La idea: una herramienta gratuita, sin cuenta y sin publicidad, que acerca a hispanohablantes y francófonos, cada uno aprendiendo el idioma del otro.'],
+['⚖️ Ten en cuenta','Las letras pertenecen a sus autores y titulares de derechos: la app no ofrece ninguna. Tú las escribes o se obtienen de servicios de terceros, para uso de estudio personal. Las traducciones automáticas son aproximadas. La prueba de nivel es orientativa, inspirada en el MCER, y no sustituye a un examen oficial (DELE, DELF…). Las marcas citadas pertenecen a sus propietarios.']]}};
+let crL=(navigator.language||'fr').toLowerCase().startsWith('es')?'es':'fr';
+function crLang(l){crL=l;document.getElementById('crt').textContent=CR[l].t;document.getElementById('crb').innerHTML=CR[l].s.map(x=>'<h3>'+x[0]+'</h3><p>'+x[1]+'</p>').join('')+'<div class="ver">Cancionero · Chansonnier · v2.8</div>';
+ document.querySelectorAll('#crm .lsw button').forEach(b=>b.classList.toggle('on',b.dataset.l===l))}
+function openCr(){crLang(crL);document.getElementById('crm').hidden=false}
+function closeCr(){document.getElementById('crm').hidden=true}
+document.getElementById('crm').addEventListener('click',e=>{if(e.target.id==='crm')closeCr()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCr()});
 </script>
 </body>
 </html>
