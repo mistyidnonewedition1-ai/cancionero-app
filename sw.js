@@ -1,4 +1,4 @@
-const C='chansons-v2.4',F=['./','es/index.html','fr/index.html','themes.js','extras.js','manifest.webmanifest','icon-192.png','icon-512.png'];
+const C='chansons-v2.5',F=['./','es/index.html','fr/index.html','themes.js','extras.js','skin.js','skin.css','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==location.origin)return;

@@ -128,6 +128,7 @@ body.dk .wrap{padding-bottom:300px}body.dk.mn .wrap{padding-bottom:90px}
 #mb .ib{color:#1a1a2e;border-color:#c8cce0;height:28px;min-width:0;font-size:12px;margin:4px 4px 0 0}
 body.dk #mas{bottom:calc(235px + env(safe-area-inset-bottom,0px))}body.dk.mn #mas{bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 </style>
+<link rel="stylesheet" href="../skin.css">
 </head>
 <body>
 <div class="wrap">
@@ -137,6 +138,7 @@ body.dk #mas{bottom:calc(235px + env(safe-area-inset-bottom,0px))}body.dk.mn #ma
 </div>
 <script src="../themes.js"></script>
 <script src="../extras.js"></script>
+<script src="../skin.js"></script>
 <script>
 const TABS=[['songs','Chansons'],['tr','Traduire'],['cl','Trous'],['voc','Vocabulaire'],['rev','Réviser']];
 let tab='songs',S={songs:[],vocab:[],streak:0,last:'',ex:0},cur=null,pop=null,card=null,show=false,clz=null;
@@ -441,6 +443,7 @@ try{localStorage.setItem('lang','es')}catch(e){}
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 window.TH&&TH.init('es');
 window.EX&&EX.init('es');
+window.SKIN&&SKIN.init();
 </script>
 </body>
 </html>

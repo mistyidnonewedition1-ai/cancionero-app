@@ -75,6 +75,7 @@ button.b,nav button{position:relative;overflow:hidden}.rp{position:absolute;bord
 @keyframes drift{0%{transform:translateY(105vh) rotate(0);opacity:0}10%{opacity:.4}90%{opacity:.3}100%{transform:translateY(-12vh) rotate(40deg);opacity:0}}
 @keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px) scale(1.1)}}@keyframes out{to{opacity:0;visibility:hidden}}
 </style>
+<link rel="stylesheet" href="../skin.css">
 </head>
 <body>
 <div class="wrap">
@@ -84,6 +85,7 @@ button.b,nav button{position:relative;overflow:hidden}.rp{position:absolute;bord
 </div>
 <script src="../themes.js"></script>
 <script src="../extras.js"></script>
+<script src="../skin.js"></script>
 <script>
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm=s=>s.toLowerCase().replace(/œ/g,'oe').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,'');
@@ -250,6 +252,7 @@ try{localStorage.setItem('lang','fr')}catch(e){}
 ld();if(!S.level&&!S.skip)tab='niv';draw();
 window.TH&&TH.init('fr');
 window.EX&&EX.init('fr');
+window.SKIN&&SKIN.init();
 </script>
 </body>
 </html>

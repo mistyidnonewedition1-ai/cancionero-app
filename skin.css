@@ -1,0 +1,41 @@
+/* Skin vif · Cancionero & Chansonnier */
+:root:root:root:root{--bg:#0a0620;--sf:#18103d;--tx:#fff;--mu:#c4bbf2;--bd:#3b2c7e;--ac:#ff3d81;--ac2:#ffc933;--bl:#3dd6ff;--gd:#ffc933;--ok:#2ee6a6;--v:#7c4dff;color-scheme:dark}
+body{background:radial-gradient(900px 500px at 85% -10%,color-mix(in srgb,#7c4dff 55%,transparent),transparent),radial-gradient(800px 500px at -10% 5%,color-mix(in srgb,var(--ac) 38%,transparent),transparent),radial-gradient(700px 500px at 50% 115%,color-mix(in srgb,var(--bl) 28%,transparent),transparent),var(--bg);background-attachment:fixed}
+html::before,html::after{content:'';position:fixed;pointer-events:none;z-index:0;width:70vmax;height:70vmax;border-radius:50%;will-change:transform}
+html::before{left:-30vmax;top:30vh;background:radial-gradient(circle,color-mix(in srgb,var(--ac) 22%,transparent),transparent 65%);animation:blob 22s ease-in-out infinite alternate}
+html::after{right:-35vmax;top:-10vh;background:radial-gradient(circle,color-mix(in srgb,var(--bl) 20%,transparent),transparent 65%);animation:blob 26s ease-in-out infinite alternate-reverse}
+@keyframes blob{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+.mu{color:var(--mu);font-size:13.5px}
+header{background:linear-gradient(120deg,#6a35ff,#ff3d81 45%,#ff9a3d 80%,#ffc933);background-size:240% 240%;border-radius:26px;padding:16px 18px;box-shadow:0 18px 50px -14px color-mix(in srgb,var(--ac) 80%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+.logo{width:52px;height:52px}h1{font-size:28px;letter-spacing:-.5px;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.stats{background:rgba(0,0,0,.28);backdrop-filter:blur(8px);font-weight:700;border:1px solid rgba(255,255,255,.25)}
+nav{background:rgba(20,12,55,.72);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:6px;gap:6px;box-shadow:0 12px 30px -14px #000}
+nav button{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:64px;padding:8px 8px;font-size:11.5px;font-weight:700;color:var(--mu);background:transparent;border-radius:16px;white-space:nowrap}
+nav button .ni{font-size:21px;line-height:1.1}
+nav button.on{color:#fff;background:linear-gradient(135deg,var(--v),var(--ac));box-shadow:0 8px 20px -6px color-mix(in srgb,var(--ac) 80%,transparent)}
+.card{background:linear-gradient(150deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 60%),var(--sf);border:1px solid rgba(255,255,255,.13);border-top:3px solid var(--cc,var(--ac));border-radius:22px;padding:14px;box-shadow:0 16px 40px -20px color-mix(in srgb,var(--cc,var(--ac)) 70%,#000)}
+#v>*:nth-child(4n+1){--cc:var(--ac)}#v>*:nth-child(4n+2){--cc:var(--bl)}#v>*:nth-child(4n+3){--cc:var(--ac2)}#v>*:nth-child(4n){--cc:#9b6bff}
+.add{border:2px dashed var(--cc,var(--bl))}
+.ttl{font-size:22px;background:linear-gradient(90deg,#fff,var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.card .fr,.card .es{font-size:21px;line-height:1.55;color:#fff}
+button.b{background:linear-gradient(135deg,var(--v),var(--ac) 60%,#ff9a3d);font-weight:700;padding:11px 18px;border-radius:14px;box-shadow:0 10px 24px -8px color-mix(in srgb,var(--ac) 85%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+button.b.g{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2);box-shadow:none}
+button.b.sm{padding:6px 12px}
+.ib{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);border-radius:12px}
+.ib:hover{border-color:var(--bl);box-shadow:0 0 0 3px color-mix(in srgb,var(--bl) 25%,transparent)}
+input,textarea,select{background:rgba(0,0,0,.38);border:1.5px solid rgba(255,255,255,.16);border-radius:14px;padding:11px}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--bl);box-shadow:0 0 0 4px color-mix(in srgb,var(--bl) 28%,transparent)}
+input[type=checkbox],input[type=range]{background:none;border:0;box-shadow:none;accent-color:var(--ac)}
+.w:hover{background:linear-gradient(135deg,var(--ac2),var(--ac));color:#1a0b33;border-radius:6px}
+.tag{background:linear-gradient(135deg,var(--ac2),#ff9a3d);color:#2a1300;font-weight:700}
+.bar{height:10px;background:rgba(255,255,255,.12)}.bar i{background:linear-gradient(90deg,var(--bl),var(--ok),var(--ac2),var(--ac));background-size:200% 100%}
+.cov{width:52px;height:52px;border-radius:16px;font-size:22px;box-shadow:0 10px 22px -8px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+.tx b{font-size:18px}
+.ref{background:linear-gradient(90deg,color-mix(in srgb,var(--bl) 18%,transparent),transparent);border-left:4px solid var(--bl)}
+.big{background:linear-gradient(90deg,var(--ac2),var(--ac),var(--bl));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:36px}
+.chips a{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}.chips a:hover{background:var(--ac);border-color:transparent;color:#fff}
+.qo{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.18);font-size:16px;font-weight:500}.qo:hover{border-color:var(--ac)}
+details.card summary{font-weight:700;font-size:16px}
+#dock{border:1px solid rgba(255,255,255,.2);border-bottom:0;background:linear-gradient(180deg,#241660,#150d3a);box-shadow:0 -14px 40px -10px rgba(124,77,255,.6)}
+#mm{width:66px;height:66px}#mm svg{width:100%;height:100%}
+#mb{background:linear-gradient(135deg,#fff,#ffe9f4);border:2px solid var(--ac)}
