@@ -16,6 +16,8 @@ steps:[
 {t:'ju',h:'🎮 Jeux',p:'QCM de mots, dictée et phrases à remettre dans l’ordre.'},
 {t:'pg',h:'📈 Progrès',p:'Ton objectif du jour, tes points d’expérience et tes badges.'},
 {t:'thm',h:'🎨 Thèmes',p:'Noël, Día de Muertos, Halloween… chaque fête change l’ambiance et t’apprend une tradition.'},
+{t:'don',h:'💛 Soutien',p:'Tu aimes l’appli ? Ici, tu peux soutenir le projet par un don libre ou la partager avec un ami. Tout reste gratuit.'},
+{t:'prem',h:'⭐ Premium',p:'L’abonnement qui débloque tout : chansons illimitées, thèmes festifs, dictée, enregistrement vocal… Le reste de l’appli reste gratuit.'},
 {t:'log',h:'📜 Log',p:'Les nouveautés de l’appli et la sauvegarde de tes données.'},
 {t:null,h:'C’est parti ! 🚀',p:'Je te conseille de commencer par le test de niveau, ou d’ajouter directement ta première chanson. Touche-moi à tout moment pour un conseil !',s:'¡Vamos a cantar!'}],
 hints:{songs:'Ajoute ta première chanson : colle un lien ou tape « Artiste - Titre ». Je m’occupe des paroles !',tr:'Touche un mot pour le garder. Traduis un vers, puis compare avec « Voir la traduction ».',cl:'Écoute la chanson puis complète les trous. Les accents sont facultatifs !',voc:'Ici, tes mots. Touche 🔊 pour les écouter.',rev:'Reviens chaque jour : les cartes arrivent juste avant que tu oublies.',pro:'Choisis ton accent et active « Lent » pour mieux entendre.',les:'Ouvre une leçon, écoute les exemples et coche quand c’est acquis.',ju:'Il te faut 4 mots pour le QCM. La dictée marche avec tes chansons.',pg:'Fixe ton objectif du jour : 5, 10 ou 20 exercices.',thm:'Choisis une fête : tu découvres sa tradition et son vocabulaire.',log:'Tu peux sauvegarder tes données ici.',v4:'Tu as déjà 4 mots ! Essaie le QCM dans l’onglet Jeux 🎮'}},
@@ -33,6 +35,8 @@ steps:[
 {t:'thm',h:'🎨 Temas',p:'Navidad, Reyes, Chandeleur, 14 de julio… cada fiesta cambia el ambiente y te enseña una tradición.'},
 {t:'ju',h:'🎮 Juegos',p:'Test de palabras, dictado y frases para ordenar.'},
 {t:'pg',h:'📈 Progreso',p:'Tu objetivo del día, tus puntos de experiencia y tus insignias.'},
+{t:'don',h:'💛 Apoyo',p:'¿Te gusta la app? Aquí puedes apoyar el proyecto con una donación libre o compartirla con un amigo. Todo sigue siendo gratis.'},
+{t:'prem',h:'⭐ Premium',p:'La suscripción que lo desbloquea todo: canciones ilimitadas, temas festivos, dictado, grabación de voz… El resto de la app sigue siendo gratis.'},
 {t:'lg',h:'📰 Novedades',p:'Las novedades de la app y la copia de seguridad de tus datos.'},
 {t:null,h:'¡Vamos allá! 🚀',p:'Te aconsejo empezar por la prueba de nivel, o añadir directamente tu primera canción. ¡Tócame cuando quieras un consejo!',s:'Allons chanter !'}],
 hints:{songs:'Añade tu primera canción: pega un enlace o escribe «Artista - Título». ¡Yo me encargo de la letra!',tr:'Toca una palabra para guardarla. Traduce un verso y compáralo con «Ver traducción».',cl:'Escucha la canción y completa los huecos. ¡Los acentos son opcionales!',voc:'Aquí están tus palabras. Toca 🔊 para escucharlas.',rev:'Vuelve cada día: las tarjetas llegan justo antes de que las olvides.',pro:'Elige tu acento y activa «Lento» para oír mejor.',les:'Abre una lección, escucha los ejemplos y marca cuando la domines.',ju:'Necesitas 4 palabras para el test. El dictado funciona con tus canciones.',pg:'Fija tu objetivo del día: 5, 10 o 20 ejercicios.',thm:'Elige una fiesta: descubrirás su tradición y su vocabulario.',lg:'Aquí puedes guardar una copia de tus datos.',v4:'¡Ya tienes 4 palabras! Prueba el test en la pestaña Juegos 🎮'}}};

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b1020">
-<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
+<script src="config.js"></script><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
 <title>Cancionero · Chansonnier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
 <style>
@@ -42,7 +42,7 @@ h1{font:800 34px Fraunces,Georgia,serif;margin:10px 0 2px;background:linear-grad
 <a class="lc" data-l="es" href="es/"><div class="fl"><svg viewBox='0 0 64 64' aria-label='Lolo'><ellipse cx='17' cy='41' rx='5' ry='11' fill='#1f9d5c' transform='rotate(10 17 41)'/><ellipse cx='47' cy='41' rx='5' ry='11' fill='#1f9d5c' transform='rotate(-10 47 41)'/><ellipse cx='32' cy='40' rx='16' ry='17' fill='#2fbf71'/><ellipse cx='32' cy='43' rx='9' ry='11' fill='#a8ec86'/><rect x='24' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><rect x='35' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><circle cx='32' cy='23' r='14' fill='#2fbf71'/><ellipse cx='27' cy='9' rx='3' ry='6' fill='#ff5a6e' transform='rotate(-20 27 9)'/><ellipse cx='32' cy='7' rx='3' ry='6' fill='#ffd166'/><ellipse cx='37' cy='9' rx='3' ry='6' fill='#ff5a6e' transform='rotate(20 37 9)'/><g class='eye'><circle cx='26.5' cy='22' r='4.6' fill='#fff'/><circle cx='37.5' cy='22' r='4.6' fill='#fff'/><circle cx='27' cy='22.5' r='2.2' fill='#10162b'/><circle cx='37' cy='22.5' r='2.2' fill='#10162b'/></g><path d='M27.5 27q4.5-3 9 0q-1 8-4.5 9q-3.5-1-4.5-9z' fill='#ffb02e'/><path d='M16 23a16 16 0 0 1 32 0' fill='none' stroke='#1b1f3a' stroke-width='3'/><rect x='12.5' y='20' width='6' height='11' rx='3' fill='#ff5a6e'/><rect x='45.5' y='20' width='6' height='11' rx='3' fill='#ff5a6e'/></svg></div><div><b>🇪🇸 Apprendre l’espagnol</b><span>Avec Lolo le perroquet · pour francophones</span></div><div class="ar">›</div></a>
 <a class="lc" data-l="fr" href="fr/"><div class="fl"><svg viewBox='0 0 64 64' aria-label='Coco'><ellipse cx='13' cy='36' rx='5' ry='12' fill='#ff5a6e' transform='rotate(-25 13 36)'/><ellipse cx='10' cy='39' rx='4' ry='10' fill='#4f8cff' transform='rotate(-35 10 39)'/><ellipse cx='17' cy='42' rx='5' ry='11' fill='#3f74d8' transform='rotate(10 17 42)'/><ellipse cx='47' cy='42' rx='5' ry='11' fill='#3f74d8' transform='rotate(-10 47 42)'/><ellipse cx='32' cy='40' rx='16' ry='17' fill='#fff4e0'/><rect x='24' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><rect x='35' y='55' width='5' height='5' rx='2' fill='#ffb02e'/><circle cx='32' cy='23' r='14' fill='#fff4e0'/><circle cx='26.5' cy='9' r='4' fill='#ff5a6e'/><circle cx='32' cy='7' r='4.5' fill='#ff5a6e'/><circle cx='37.5' cy='9' r='4' fill='#ff5a6e'/><g class='eye'><circle cx='26.5' cy='22' r='4.6' fill='#fff' stroke='#e4d6bd' stroke-width='.8'/><circle cx='37.5' cy='22' r='4.6' fill='#fff' stroke='#e4d6bd' stroke-width='.8'/><circle cx='27' cy='22.5' r='2.2' fill='#10162b'/><circle cx='37' cy='22.5' r='2.2' fill='#10162b'/></g><path d='M28 26h8l-4 8z' fill='#ffc857'/><ellipse cx='32' cy='37' rx='3' ry='4' fill='#ff5a6e'/><path d='M16 23a16 16 0 0 1 32 0' fill='none' stroke='#1b1f3a' stroke-width='3'/><rect x='12.5' y='20' width='6' height='11' rx='3' fill='#4f8cff'/><rect x='45.5' y='20' width='6' height='11' rx='3' fill='#4f8cff'/></svg></div><div><b>🇫🇷 Aprender francés</b><span>Con Coco el gallo · para hispanohablantes</span></div><div class="ar">›</div></a>
 <p class="note">Ton choix est mémorisé. Le bouton 🌍 de l’appli permet de changer de langue.<br>Tu elección se guarda. El botón 🌍 de la app permite cambiar de idioma.</p>
-<button class="cr" onclick="openCr()">ℹ️ Crédits · Créditos</button>
+<button class="cr" onclick="openCr()">ℹ️ Crédits · Créditos</button> <a class="cr" id="donb" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none">💛 Soutenir · Apoyar</a>
 </main>
 <div id="crm" hidden><div class="p" role="dialog" aria-modal="true"><div class="top"><h2 id="crt">Crédits</h2><button class="x" onclick="closeCr()" aria-label="Fermer">✕</button></div><div class="lsw"><button data-l="fr" onclick="crLang('fr')">Français</button><button data-l="es" onclick="crLang('es')">Español</button></div><div id="crb"></div></div></div>
 <script>
@@ -53,7 +53,7 @@ if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceW
 </script>
 <script>
 /* Écris ton nom ici pour l’afficher dans les crédits : */
-const CREATEUR='NXMISTYI';
+const CREATEUR='';
 const CR={
 fr:{t:'Crédits',s:[
 ['👤 Qui ?','Conçue et dirigée par '+(CREATEUR||'le créateur de l’app')+', développée avec <b>Claude</b> (Claude Sonnet 5.5), l’assistant IA d’Anthropic. Les mascottes Lolo 🦜 et Coco 🐓, le logo, les animations et les thèmes ont été créés spécialement pour cette appli.'],
@@ -67,6 +67,7 @@ es:{t:'Créditos',s:[
 ['🧰 ¿Con qué?','<ul><li>HTML, CSS y JavaScript, sin framework</li><li>Voz del dispositivo (Web Speech), sonidos sintetizados (Web Audio) y micrófono (MediaRecorder)</li><li>Datos guardados en tu dispositivo (localStorage) y modo sin conexión (service worker)</li><li>Fuentes de Google Fonts: Fraunces y DM Sans</li><li>Servicios de terceros: LRCLIB y lyrics.ovh (letras), MyMemory (traducción automática), noembed y oEmbed (títulos), reproductores de YouTube, Spotify, SoundCloud y Deezer</li></ul>'],
 ['💡 ¿Por qué?','Porque la música es una de las mejores formas de aprender un idioma: se retienen las palabras, la pronunciación y la cultura sin darse cuenta. La idea: una herramienta gratuita, sin cuenta y sin publicidad, que acerca a hispanohablantes y francófonos, cada uno aprendiendo el idioma del otro.'],
 ['⚖️ Ten en cuenta','Las letras pertenecen a sus autores y titulares de derechos: la app no ofrece ninguna. Tú las escribes o se obtienen de servicios de terceros, para uso de estudio personal. Las traducciones automáticas son aproximadas. La prueba de nivel es orientativa, inspirada en el MCER, y no sustituye a un examen oficial (DELE, DELF…). Las marcas citadas pertenecen a sus propietarios.']]}};
+(function(){var c=window.APPCFG;if(c&&c.donateUrl&&/^https?:\/\//i.test(c.donateUrl)){var a=document.getElementById('donb');a.href=c.donateUrl;a.style.display='inline-block'}})();
 let crL=(navigator.language||'fr').toLowerCase().startsWith('es')?'es':'fr';
 function crLang(l){crL=l;document.getElementById('crt').textContent=CR[l].t;document.getElementById('crb').innerHTML=CR[l].s.map(x=>'<h3>'+x[0]+'</h3><p>'+x[1]+'</p>').join('')+'<div class="ver">Cancionero · Chansonnier · v2.8</div>';
  document.querySelectorAll('#crm .lsw button').forEach(b=>b.classList.toggle('on',b.dataset.l===l))}

@@ -88,6 +88,9 @@ button.b,nav button{position:relative;overflow:hidden}.rp{position:absolute;bord
 <script src="../skin.js"></script>
 <script src="../sfx.js"></script>
 <script src="../tour.js"></script>
+<script src="../config.js"></script>
+<script src="../premium.js"></script>
+<script src="../donate.js"></script>
 <script>
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm=s=>s.toLowerCase().replace(/œ/g,'oe').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,'');
@@ -249,6 +252,8 @@ const _ms=mas;mas=function(m){_ms(m);const b=document.getElementById('mm');b.cla
 const _av=addv;addv=function(){const n=S.vocab.length;_av();if(S.vocab.length>n)_bm(6)};
 const _rt=rt;rt=function(i,r){_rt(i,r);if(r=='ok')_bm(5)};
 if(window.EX){TABS.push(['ju','Juegos'],['pg','Progreso'],['lg','Novedades']);VW.ju=()=>EX.games();VW.pg=()=>EX.prog();VW.lg=()=>EX.log()}
+if(window.PREM&&PREM.on){TABS.push(['prem','Premium']);VW.prem=()=>PREM.view()}
+if(window.DON){TABS.push(['don','Apoyo']);VW.don=()=>DON.view()}
 TABS.push(['thm','Temas']);VW.thm=()=>window.TH?TH.view():`<div class='card'>Los temas festivos están disponibles en tu sitio web.</div>`;
 try{localStorage.setItem('lang','fr')}catch(e){}
 ld();if(!S.level&&!S.skip)tab='niv';draw();
@@ -257,6 +262,8 @@ window.EX&&EX.init('fr');
 window.SKIN&&SKIN.init();
 window.SFX&&SFX.init();
 window.TOUR&&TOUR.init('fr');
+window.PREM&&PREM.init('fr');
+window.DON&&DON.init('fr');
 </script>
 </body>
 </html>

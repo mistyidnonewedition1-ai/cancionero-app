@@ -3,12 +3,11 @@
 Apprendre l’espagnol (francophones, avec Lolo le perroquet) ou le français (hispanophones, avec Coco le coq) grâce à des chansons.
 
 - `/` : choix de la langue (mémorisé, bouton 🌍 pour changer) et crédits
-- `/es/` : Cancionero
-- `/fr/` : Chansonnier
-- `skin.css`, `skin.js` : style vif et icônes
-- `sfx.js` : bruitages (Web Audio)
-- `tour.js` : visite guidée par la mascotte et conseils
-- `themes.js` : thèmes festifs partagés
-- `extras.js` : jeux, progrès, enregistrement vocal, journal
+- `/es/` : Cancionero · `/fr/` : Chansonnier
+- `config.js` : réglages (Premium on/off, lien de don) — à ne pas écraser lors des mises à jour
+- `donate.js` : onglet Soutien (don libre + partage)
+- `premium.js` + `api/` : abonnement Premium (Stripe), **en pause** — voir `PREMIUM_SETUP.md`
+- `skin.css`, `skin.js` : style vif et icônes · `sfx.js` : bruitages · `tour.js` : visite guidée
+- `themes.js` : thèmes festifs · `extras.js` : jeux, progrès, voix, journal
 
 Conçue avec Claude (Anthropic). Voir les crédits dans l’appli.
