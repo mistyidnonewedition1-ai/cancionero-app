@@ -52,7 +52,7 @@ body{background:radial-gradient(800px 420px at 90% -8%,color-mix(in srgb,${g1} 4
 header{background:linear-gradient(135deg,${g1},${g2} 55%,${g3})!important;background-size:220% 220%!important}
 header:after{content:'${t.e} ${t.x.slice(0,3).join(' ')}'!important}
 nav{background:color-mix(in srgb,${sf} 82%,transparent)!important}
-button.b:not(.g),nav button.on{background:linear-gradient(135deg,${g1},${g2})!important}
+button.b:not(.g),nav button.on .ni,.sgrid button.on{background:linear-gradient(135deg,${g1},${g2})!important}
 .add{border-color:${c}!important;background:color-mix(in srgb,${c} 10%,${sf})!important}`}
 function fx(t){let f=document.getElementById('fx');if(f)f.remove();if(!t)return;f=document.createElement('div');f.id='fx';
 f.innerHTML=Array.from({length:14},(_,i)=>`<span style='left:${(i*7.3+Math.random()*6)%94}%;font-size:${16+(Math.random()*16|0)}px;animation:${t.d==='d'?'fxd':'fxu'} ${9+Math.random()*9}s linear ${-Math.random()*15}s infinite'>${t.x[i%t.x.length]}</span>`).join('');document.body.append(f)}

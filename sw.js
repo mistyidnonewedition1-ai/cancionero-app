@@ -1,4 +1,4 @@
-const C='chansons-v3.0',F=['./','es/index.html','fr/index.html','themes.js','extras.js','skin.js','skin.css','sfx.js','tour.js','premium.js','donate.js','config.js','manifest.webmanifest','icon-192.png','icon-512.png'];
+const C='chansons-v3.1',F=['./','es/index.html','fr/index.html','themes.js','extras.js','skin.js','skin.css','sfx.js','tour.js','premium.js','donate.js','config.js','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin||u.pathname.startsWith('/api/'))return;

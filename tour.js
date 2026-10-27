@@ -50,7 +50,7 @@ function place(btn){const s=document.getElementById('tspot');if(!s)return;
  const r=btn.getBoundingClientRect();s.style.cssText='left:'+(r.left-5)+'px;top:'+(r.top-5)+'px;width:'+(r.width+10)+'px;height:'+(r.height+10)+'px'}
 function show(i){idx=i;const s=steps[i],x=T[L].ui;
  if(s.t&&typeof go==='function')go(s.t);
- const bi=TABS.findIndex(t=>t[0]===s.t),btn=s.t?document.querySelectorAll('#nav button')[bi]:null;
+ const btn=s.t?(document.querySelector('#nav button[data-t="'+s.t+'"]')||document.querySelector('#nav button[data-more]')):null;
  if(btn)btn.scrollIntoView({inline:'center',block:'nearest'});
  setTimeout(()=>place(btn),90);
  const last=i===steps.length-1,tb=document.querySelector('#tcard .tb');if(!tb)return;
